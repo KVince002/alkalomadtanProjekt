@@ -8,7 +8,8 @@ from django.http import HttpRequest, HttpResponse
 # kezdőlap
 def homepage(request):
     print("Kezdőlap / homepage()")
-    print(loader.get_template("app/home.html"))
+
+    # Válaszadó
     template = loader.get_template("app/home.html")
     context = {}
     return HttpResponse(template.render(context,request))

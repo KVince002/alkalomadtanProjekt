@@ -119,9 +119,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# static dir a dokumentációk szerint
+# static fájlok helye
 STATICFILES_DIRS = [
     BASE_DIR / 'app/static',
+    BASE_DIR / "app/static/bootstrap/css",
+    BASE_DIR / "app/static/bootstrap/js",
 ]
 
 # Default primary key field type

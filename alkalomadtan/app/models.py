@@ -22,6 +22,8 @@ class MunkaVallalo(models.Model):
 class MunkaAdo(models.Model):
     # azonosítom a USER tábláből
     azon = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # MunkaAdó neve
+    nev = models.CharField(max_length=255, null=False, default="")
     # telefonszám
     telefon = models.CharField(max_length=11, null=False)
     # email 

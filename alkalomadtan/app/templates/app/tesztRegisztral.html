@@ -1,0 +1,13 @@
+ <!-- regisztációs űrlap -->
+ <form method="post">
+    <!-- kiegészített védelem -->
+    {% csrf_token %}
+    <table>
+        <!-- form generálása tábla ként -->
+        {{form.as_table}}
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Regisztrálás" class="mdl-button mdl-js-button mdl-button--raised"></td>
+        </tr>
+    </table>
+</form>

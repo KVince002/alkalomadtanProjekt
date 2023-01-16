@@ -1,8 +1,8 @@
-from multiprocessing import context
-from re import template
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpRequest, HttpResponse
+from app.forms import Regisztralas, MunkaVallalo_Kiegeszito
+from django.contrib.auth import logout, authenticate, login
 
 # Create your views here.
 # kezdőlap
@@ -16,8 +16,28 @@ def homepage(request):
         }
     return HttpResponse(template.render(context,request))
 
-def munkak(request):
-    print("Munka lista / munkak()")
+def tesztRegisztral(request):
+    print("⚠️ teszt regisztráció / tesztRegisztral()")
 
-    # Válaszadó
+    if request.method == "POST":
+        # teszt regisztrálás létrehozása
+        tesztRegisztraciosLap = Regisztralas(request.POST)
+
+        # valudálás ellenőrzés
+        if tesztRegisztraciosLap.is_valid():
+            regisztraltFelhasznalo = tesztRegisztraciosLap.mentes()
+
+            #frissen regisztrál felhasználó regisztrálása
+            login(request, regisztraltFelhasznalo)
+            
+            # mi ként szeretne majd regisztrálni? Munka adó vagy munka vállaló?
+    else:
+        tesztRegisztraciosLap = Regisztralas()
     
+    # válasz
+    template = loader.get_template("app/tesztRegisztral.html")
+    context = {
+        "cim": "⚠️ tesztRegisztrálás",
+        "form": tesztRegisztraciosLap
+    }
+    return HttpResponse(template.render(context,request))

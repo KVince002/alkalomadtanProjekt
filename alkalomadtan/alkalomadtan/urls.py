@@ -23,4 +23,7 @@ urlpatterns = [
     # Admin oldal
     path('admin/', admin.site.urls),
     path("", views.homepage, name="Kezdőlap"),
+
+    # teszt oldalak
+    path("tesztRegisztral/", views.tesztRegisztral, name="tesztRegisztral")
 ]

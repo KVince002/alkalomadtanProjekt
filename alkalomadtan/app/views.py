@@ -15,3 +15,9 @@ def homepage(request):
         "cim": "Kezdőlap"
         }
     return HttpResponse(template.render(context,request))
+
+def munkak(request):
+    print("Munka lista / munkak()")
+
+    # Válaszadó
+    

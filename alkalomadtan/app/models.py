@@ -9,6 +9,8 @@ import django.contrib.auth.models
 class MunkaVallalo(models.Model):
     # a becenév jó ötlet lett volna elsőre, ez feing key a user modelből
     azon = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # munka vállaló bemutatkozása
+    bemutatkozas = models.TextField(null=True)
     # telefonszám
     telefon = models.CharField(max_length=11, null=False)
     # email
@@ -24,6 +26,8 @@ class MunkaAdo(models.Model):
     azon = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # MunkaAdó neve
     nev = models.CharField(max_length=255, null=False, default="")
+    # munkadó bemutatkozasa
+    bemutatkozas = models.TextField(null=True, default="")
     # telefonszám
     telefon = models.CharField(max_length=11, null=False)
     # email 
@@ -54,7 +58,7 @@ class Munka(models.Model):
     # munkanapok és óraszámok. Ez egy map/szótár-t fog majd tárolni. A szótár inex: napok; érték: óraköz
     munkaNapok = models.TextField()
 
-
+# jelentkezés modell
 class Jelentkezes(models.Model):
     # munkáltaó
     munkaltato = models.ForeignKey(MunkaAdo, on_delete=models.CASCADE)
@@ -64,4 +68,3 @@ class Jelentkezes(models.Model):
     ido = models.DateTimeField(null=False)
     # berigeny
     berigeny = models.IntegerField(null=True)
-

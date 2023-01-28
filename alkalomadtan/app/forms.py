@@ -62,10 +62,13 @@ class Regisztralas(forms.Form):
         
         return felhasznalo
 
-# 🚫 befejeztetlen
+# munaka vállaló kiegészítése
 class MunkaVallalo_Kiegeszito(forms.ModelForm):
     
     class Meta:
         model = MunkaVallalo
-        fields = ("telefon", "email", "erdekelt")
+        fields = ("bemutatkozas","telefon", "email", "erdekelt")
+    bemutatkozas = forms.Textarea(label="Bemutatkozás", requied = False)
     telefon = forms.CharField(label="Telefonszám", max_length=11, required=True)
+    email = forms.EmailField(label= "Email cím", required=True)
+    erdekelt = forms.ChoiceField(choices=MunkaVallalo.erdekeltsegek, widget=forms.MultipleChoiceField)

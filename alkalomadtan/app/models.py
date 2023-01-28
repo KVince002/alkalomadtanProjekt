@@ -7,6 +7,18 @@ import django.contrib.auth.models
 # Create your models here
 # munkavállalók
 class MunkaVallalo(models.Model):
+    # érdekeltségek
+    erdekeltsegek = (
+        ("var", "Varrás szabás"),
+        ("prog", "Programozás"),
+        ("mern", "Mérnök"),
+        ("webf", "webfejlesztés"),
+        ("ramo", "rámolás, pakolás"),
+        ("fuva", "fuvarozás"),
+        ("erte", "értékesítés"),
+        ("taka", "takarítás")
+    )
+
     # a becenév jó ötlet lett volna elsőre, ez feing key a user modelből
     azon = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # munka vállaló bemutatkozása
@@ -17,8 +29,8 @@ class MunkaVallalo(models.Model):
     email = models.EmailField(null=False)
     # értékelés a szám csillagokat jelöl
     eretkeles = models.FloatField(default=0)
-    # érdekeltségi körök, ezt majd kömbként kell majd visszadnia
-    erdekelt = models.CharField(max_length=255)
+    # érdekeltségi körök, ez egy checkbox-lesz (remélem)
+    erdekelt = models.CharField(max_length=4, choices=erdekeltsegek)
 
 # # munka adó
 class MunkaAdo(models.Model):

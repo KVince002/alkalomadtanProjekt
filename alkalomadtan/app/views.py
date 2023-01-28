@@ -16,6 +16,7 @@ def homepage(request):
         }
     return HttpResponse(template.render(context,request))
 
+
 def tesztRegisztral(request):
     print("⚠️ teszt regisztráció / tesztRegisztral()")
 

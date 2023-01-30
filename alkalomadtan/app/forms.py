@@ -50,7 +50,7 @@ class Regisztralas(forms.Form):
         #     raise ValidationError("Biztos hogy kitöltötte a két jelszőmezőt?")
         return jelszo2
 
-    def mentes(self, commit=True):
+    def Mentes(self, commit=True):
         felhasznalo = User.objects.create_user(
             username = self.clean_felhasznalo(),
             email = self.clean_email(),
@@ -64,11 +64,20 @@ class Regisztralas(forms.Form):
 
 # munaka vállaló kiegészítése
 class MunkaVallalo_Kiegeszito(forms.ModelForm):
-    
     class Meta:
         model = MunkaVallalo
-        fields = ("bemutatkozas","telefon", "email", "erdekelt")
-    bemutatkozas = forms.Textarea(label="Bemutatkozás", requied = False)
+        fields = ("bemutatkozas","telefon", "erdekelt")
+    bemutatkozas = forms.Textarea()
     telefon = forms.CharField(label="Telefonszám", max_length=11, required=True)
-    email = forms.EmailField(label= "Email cím", required=True)
-    erdekelt = forms.ChoiceField(choices=MunkaVallalo.erdekeltsegek, widget=forms.MultipleChoiceField)
+    erdekelt = forms.ChoiceField(choices=MunkaVallalo.erdekeltsegek, required=False, widget=forms.CheckboxSelectMultiple())
+
+    def Mentes(self, commit = True, UserId="", UserEmail=""):
+        munkavallaoKieg = MunkaVallalo(
+            UserId,
+            self.cleaned_data["bemutatkozas"],
+                        self.cleaned_data["telefon"],
+                        UserEmail,
+            self.cleaned_data["erdekelt"]
+            )
+        munkavallaoKieg.save()
+        return f"{UserId}, {UserEmail}, {self.cleaned_data['telefon']} mentette el."

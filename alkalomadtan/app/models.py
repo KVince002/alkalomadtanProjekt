@@ -32,6 +32,8 @@ class MunkaVallalo(models.Model):
     # érdekeltségi körök, ez egy checkbox-lesz (remélem)
     erdekelt = models.CharField(max_length=4, choices=erdekeltsegek)
 
+    
+
 # # munka adó
 class MunkaAdo(models.Model):
     # azonosítom a USER tábláből

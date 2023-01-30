@@ -25,5 +25,6 @@ urlpatterns = [
     path("", views.homepage, name="Kezdőlap"),
 
     # teszt oldalak
-    path("tesztRegisztral/", views.tesztRegisztral, name="tesztRegisztral")
+    path("tesztRegisztral/", views.tesztRegisztral, name="tesztRegisztral"),
+    path("tesztRegisztralMunkavallalo", views.tesztRegisztralMunkaV, name="tesztRegisztralMunkaV")
 ]

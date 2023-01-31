@@ -58,17 +58,18 @@ def tesztRegisztralMunkaV(request):
             #frissen regisztrál felhasználó regisztrálása
             login(request, regisztraltFelhasznalo)
             munkaVallaoKieg = MunkaVallalo_Kiegeszito.Mentes(request.user.username, request.user.email)
+            munkaVallaoKieg.save()
             
     else:
         tesztRegisztraciosLap = Regisztralas()
         tesztMunkaVallalo_Kiegeszito = MunkaVallalo_Kiegeszito()
 
-        if tesztRegisztraciosLap.is_valid() and tesztMunkaVallalo_Kiegeszito.is_valid():
-            regisztraltFelhasznalo = tesztRegisztraciosLap.Mentes()
+        # if tesztRegisztraciosLap.is_valid() and tesztMunkaVallalo_Kiegeszito.is_valid():
+        #     regisztraltFelhasznalo = tesztRegisztraciosLap.Mentes()
 
-            #frissen regisztrál felhasználó regisztrálása
-            login(request, regisztraltFelhasznalo)
-            munkaVallaoKieg = MunkaVallalo_Kiegeszito.Mentes(request.user.username, request.user.email)
+        #     #frissen regisztrál felhasználó regisztrálása
+        #     login(request, regisztraltFelhasznalo)
+        #     munkaVallaoKieg = MunkaVallalo_Kiegeszito.Mentes(request.user.username, request.user.email)
 
     template = loader.get_template("app/tesztRegisztral_es_Munkavallalo.html")
     context = {

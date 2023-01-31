@@ -62,7 +62,7 @@ class Regisztralas(forms.Form):
         
         return felhasznalo
 
-# munaka vállaló kiegészítése
+# munka vállaló kiegészítése
 class MunkaVallalo_Kiegeszito(forms.ModelForm):
     class Meta:
         model = MunkaVallalo
@@ -81,3 +81,16 @@ class MunkaVallalo_Kiegeszito(forms.ModelForm):
             )
         munkavallaoKieg.save()
         return f"{UserId}, {UserEmail}, {self.cleaned_data['telefon']} mentette el."
+
+# munkaadó kiegészítése
+class MunkaAdo_Kiegeszito(forms.ModelForm):
+    class Meta:
+        model = MunkaAdo
+        fields = ("nev","bemutatkozas","telefon", "email")
+    nev = forms.CharField(label="Munkaadó neve",max_length=255)
+    bemutatkozas = forms.Textarea()
+    telefon = forms.CharField(label="Telefonszám", max_length=11, required=True)
+    email = forms.EmailField(label="Mukadó email címe")
+
+    def Mentes(self, commit = True, UserId=""):
+        munkaAdoKieg = MunkaAdo("")

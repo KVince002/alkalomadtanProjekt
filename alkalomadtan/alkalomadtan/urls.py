@@ -22,9 +22,12 @@ from django.urls import path, include
 urlpatterns = [
     # Admin oldal
     path('admin/', admin.site.urls),
-    path("", views.homepage, name="Kezdőlap"),
+    path("", views.Homepage, name="Kezdőlap"),
+    path("rolunk/", views.Rolunk, name="Rolunk"),
+    path("munkak/", views.Allasok, name="Munak"),
+    path("blog/", views.Blog, name="Blog"),
 
     # teszt oldalak
     path("tesztRegisztral/", views.tesztRegisztral, name="tesztRegisztral"),
-    path("tesztRegisztralMunkavallalo", views.tesztRegisztralMunkaV, name="tesztRegisztralMunkaV")
+    path("tesztRegisztralMunkavallalo/", views.tesztRegisztralMunkaV, name="tesztRegisztralMunkaV")
 ]

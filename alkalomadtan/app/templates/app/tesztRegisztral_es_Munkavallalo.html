@@ -1,4 +1,6 @@
- <!-- regisztációs űrlap és munkavallalo -->
+{% extends 'app/layout/commonhead0.html' %}
+{% block content %}
+<!-- regisztációs űrlap és munkavallalo -->
  {% if form and form1%}
  <!-- Form Errors -->
  {% if form.errors %}
@@ -29,3 +31,5 @@
     {% endif %}
     <input type="submit" value="Regisztrálás" class="btn btn-primary">
     </form>
+
+    {% endblock %}

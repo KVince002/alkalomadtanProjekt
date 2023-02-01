@@ -7,7 +7,7 @@ from app.models import *
 
 # Create your views here.
 # kezdőlap
-def homepage(request):
+def Homepage(request):
     print("Kezdőlap / homepage()")
 
     # Válaszadó
@@ -17,6 +17,31 @@ def homepage(request):
         }
     return HttpResponse(template.render(context,request))
 
+# rólonk oldal
+def Rolunk(request):
+    template = loader.get_template("app/about.html")
+    context = {
+        "cim": "Rólunk"
+        }
+    return HttpResponse(template.render(context,request))
+
+# állások oldal
+def Allasok(request):
+    template = loader.get_template("app/jobs.html")
+    context = {
+        "cim": "Állások"
+        }
+    return HttpResponse(template.render(context,request))
+
+# blog
+def Blog(request):
+    template = loader.get_template("app/blog.html")
+    context = {
+        "cim": "Blog"
+        }
+    return HttpResponse(template.render(context,request))
+
+# tesztek
 # regisztrálás próbája
 def tesztRegisztral(request):
     print("⚠️ teszt regisztráció / tesztRegisztral(request)")
@@ -49,8 +74,8 @@ def tesztRegisztralMunkaV(request):
     print("⚠️ test regisztáció munkavállalóként / tesztRegisztralMunkaV(request)")
 
     if request.method == "POST":
-        tesztRegisztraciosLap = Regisztralas(request.POST)
-        tesztMunkaVallalo_Kiegeszito = MunkaVallalo_Kiegeszito(request.POST)
+        tesztRegisztraciosLap = Regisztralas(request.POST, prefix="form")
+        tesztMunkaVallalo_Kiegeszito = MunkaVallalo_Kiegeszito(request.POST, prefix="from1")
 
         if tesztRegisztraciosLap.is_valid() and tesztMunkaVallalo_Kiegeszito.is_valid():
             regisztraltFelhasznalo = tesztRegisztraciosLap.Mentes()
@@ -61,8 +86,8 @@ def tesztRegisztralMunkaV(request):
             munkaVallaoKieg.save()
             
     else:
-        tesztRegisztraciosLap = Regisztralas()
-        tesztMunkaVallalo_Kiegeszito = MunkaVallalo_Kiegeszito()
+        tesztRegisztraciosLap = Regisztralas(prefix="form")
+        tesztMunkaVallalo_Kiegeszito = MunkaVallalo_Kiegeszito(prefix="form1")
 
         # if tesztRegisztraciosLap.is_valid() and tesztMunkaVallalo_Kiegeszito.is_valid():
         #     regisztraltFelhasznalo = tesztRegisztraciosLap.Mentes()

@@ -124,6 +124,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'app/static',
     BASE_DIR / "app/static/bootstrap/css",
     BASE_DIR / "app/static/bootstrap/js",
+    BASE_DIR / "app/static/images"
 ]
 
 # Default primary key field type

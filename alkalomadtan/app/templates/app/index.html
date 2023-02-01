@@ -18,10 +18,10 @@
 -->
 {% extends 'app/layout/commonhead0.html' %}
 {% block content %}
-
+{% load static %}
     <section class="header">
         <nav>  
-            <a href="index.html"><img src="images/logo.png" alt="logo" title="logo"></a>
+            <a href="index.html"><img src="{% static 'logo.png' %}" alt="logo" title="logo"></a>
             <div class="nav-links" id="navLinks">
                 <i class="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
@@ -73,19 +73,19 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipising elit.</p>
         <div class="row">
             <div class="place-col">
-                <img src="images/london.jpg" alt="London" title="London">
+                <img src="{% static "london.jpg"%}" alt="London" title="London">
                 <div class="layer">
                     <h3>SZOLNOK</h3>
                 </div>
             </div>
             <div class="place-col">
-                <img src="images/newyork.jpg" alt="London" title="London">
+                <img src="{% static 'newyork.jpg'%}" alt="London" title="London">
                 <div class="layer">
                     <h3>BUDAPEST</h3>
                 </div>
             </div>
             <div class="place-col">
-                <img src="images/washington.jpg" alt="London" title="London">
+                <img src="{% static 'washington.jpg' %}" alt="London" title="London">
                 <div class="layer">
                     <h3>KECSKEMÉT</h3>
                 </div>
@@ -100,17 +100,17 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipising elit.</p>
         <div class="row">
             <div class="employers-col">
-                <img src="images/library.jpg" alt="Library" title="Library">
+                <img src="{% static 'library.jpg' %}" alt="Library" title="Library">
                 <h3>Juttatások</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat enim necessitatibus laboriosam. Sed reprehenderit omnis voluptas, quos illum nobis cumque itaque hic ipsum non fugit in veritatis, cupiditate porro animi?</p>
             </div>
             <div class="employers-col">
-                <img src="images/basketball.jpg" alt="Basketball" title="Basketball">
+                <img src="{% static 'basketball.jpg' %}" alt="Basketball" title="Basketball">
                 <h3>Megbízhatóság</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat enim necessitatibus laboriosam. Sed reprehenderit omnis voluptas, quos illum nobis cumque itaque hic ipsum non fugit in veritatis, cupiditate porro animi?</p>
             </div>
             <div class="employers-col">
-                <img src="images/cafeteria.jpg" alt="Cafeteria" title="Cafeteria">
+                <img src="{% static 'cafeteria.jpg' %}" alt="Cafeteria" title="Cafeteria">
                 <h3>Külföldi Fizetések</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat enim necessitatibus laboriosam. Sed reprehenderit omnis voluptas, quos illum nobis cumque itaque hic ipsum non fugit in veritatis, cupiditate porro animi?</p>
             </div>
@@ -126,7 +126,7 @@
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     <div class="row">
         <div class="comments-col">
-            <img src="images/user1.jpg" alt="user" title="user">
+            <img src="{% static 'user1.jpg' %}" alt="user" title="user">
             <div>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis esse reiciendis nihil impedit maxime blanditiis! Fugiat, ducimus fugit ad veritatis laudantium voluptas enim quas debitis, consequuntur saepe dolores nam voluptates?</p>
                 <h3>Szopó Krisztina</h3>
@@ -138,7 +138,7 @@
             </div>
         </div>
         <div class="comments-col">
-            <img src="images/user2.jpg" alt="user2" title="user2">
+            <img src="{% static 'user2.jpg' %}" alt="user2" title="user2">
             <div>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis esse reiciendis nihil impedit maxime blanditiis! Fugiat, ducimus fugit ad veritatis laudantium voluptas enim quas debitis, consequuntur saepe dolores nam voluptates?</p>
                 <h3>Taknyos Lajos</h3>

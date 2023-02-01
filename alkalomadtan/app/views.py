@@ -11,7 +11,7 @@ def homepage(request):
     print("Kezdőlap / homepage()")
 
     # Válaszadó
-    template = loader.get_template("app/home.html")
+    template = loader.get_template("app/index.html")
     context = {
         "cim": "Kezdőlap"
         }

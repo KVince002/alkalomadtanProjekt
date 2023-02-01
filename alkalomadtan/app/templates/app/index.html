@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -14,6 +15,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+-->
+{% extends 'app/layout/commonhead0.html' %}
+{% block content %}
+
     <section class="header">
         <nav>  
             <a href="index.html"><img src="images/logo.png" alt="logo" title="logo"></a>
@@ -167,7 +172,7 @@
         <i class="fa fa-linkedin"></i>
     </div>
 </section>
-
+{% comment %} 
 <!----Javascript for toggle menu-->
     <script>
         var navLinks = document.getElementById("navLinks");
@@ -183,4 +188,5 @@
     </script>
 
 </body>
-</html>
+</html> {% endcomment %}
+{% endblock %}

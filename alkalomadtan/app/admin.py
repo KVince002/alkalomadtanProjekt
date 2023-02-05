@@ -1,3 +1,46 @@
 from django.contrib import admin
+from app.models import MunkaVallalo, MunkaAdo, Munka, Jelentkezes
 
-# Register your models here.
+# /admin oldal modell megtekintői
+# munkaVallalo
+class MunkaVallaoAdmin(admin.ModelAdmin):
+    fields = ["bemutatkozas",
+              "telefon",
+              "email",
+              "eretkeles",
+              "erdekelt"]
+
+# munkaAdo
+class MunkaAdoAdmin(admin.ModelAdmin):
+    fields = ["nev",
+              "bemutatkozas",
+              "telefon",
+              "email",
+              "ertekeles"]
+
+# munka
+class MunkdaAdmin(admin.ModelAdmin):
+    fields = ["nev",
+              "leiras",
+              "ertekeles",
+              "helye",
+              "katt",
+              "publikalo",
+              "berMin",
+              "berMax",
+              "munkaKezd",
+              "munkaNapok"]
+
+# jelentkezes
+class JelentkezesAdmin(admin.ModelAdmin):
+    fields = ["munkaltato",
+              "munkaVallalo",
+              "munka",
+              "ido",
+              "berigeny"]
+    
+# modellek regisztrálása a az admin felületre
+admin.site.register(MunkaVallalo, MunkaVallaoAdmin)
+admin.site.register(MunkaAdo, MunkaAdoAdmin)
+admin.site.register(Munka, MunkdaAdmin)
+admin.site.register(Jelentkezes, JelentkezesAdmin)

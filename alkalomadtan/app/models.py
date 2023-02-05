@@ -3,6 +3,10 @@ from django.conf import settings
 from django.forms import CharField
 # Django user modell importálása
 import django.contrib.auth.models
+# ido
+from time import timezone
+from datetime import datetime
+#from django.utils.timezone import timezone
 
 # Create your models here
 # munkavállalók
@@ -32,8 +36,6 @@ class MunkaVallalo(models.Model):
     # érdekeltségi körök, ez egy checkbox-lesz (remélem)
     erdekelt = models.CharField(max_length=4, choices=erdekeltsegek)
 
-    
-
 # # munka adó
 class MunkaAdo(models.Model):
     # azonosítom a USER tábláből
@@ -41,7 +43,7 @@ class MunkaAdo(models.Model):
     # MunkaAdó neve
     nev = models.CharField(max_length=255, null=False, default="")
     # munkadó bemutatkozasa
-    bemutatkozas = models.TextField(null=True, default="")
+    bemutatkozas = models.TextField(null=True, default="Nem írt bemutatkozást!")
     # telefonszám
     telefon = models.CharField(max_length=11, null=False)
     # email 
@@ -78,7 +80,9 @@ class Jelentkezes(models.Model):
     munkaltato = models.ForeignKey(MunkaAdo, on_delete=models.CASCADE)
     # mukavállaló
     munkaVallalo = models.ForeignKey(MunkaVallalo, on_delete=models.CASCADE)
+    # munka
+    munka = models.ForeignKey(Munka, on_delete=models.CASCADE, default=0)
     # jelentkezés időpontja
-    ido = models.DateTimeField(null=False)
+    ido = models.DateTimeField(null=False, default=datetime.utcnow())
     # berigeny
-    berigeny = models.IntegerField(null=True)
+    berigeny = models.IntegerField(null=True, default=0)

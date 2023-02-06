@@ -1,0 +1,312 @@
+[
+  [
+    {
+      "mediaEngineConnectionId": "Native-0",
+      "transport": {
+        "availableOutgoingBitrate": 600000,
+        "ping": 22,
+        "decryptionFailures": 1,
+        "routingFailures": 2,
+        "localAddress": "188.142.175.215",
+        "pacerDelay": 0,
+        "receiverReports": [],
+        "receiverBitrateEstimate": 0,
+        "outboundBitrateEstimate": 600000,
+        "inboundBitrateEstimate": 0,
+        "bytesReceived": 1554829,
+        "bytesSent": 209960
+      },
+      "camera": null,
+      "rtp": {
+        "inbound": {
+          "539104062805639171": [
+            {
+              "type": "audio",
+              "ssrc": 270942,
+              "sinkWant": "100",
+              "codec": {
+                "id": 120,
+                "name": "opus"
+              },
+              "bytesReceived": 853240,
+              "packetsReceived": 5396,
+              "packetsLost": 0,
+              "fractionLost": null,
+              "fecPacketsReceived": 3865,
+              "fecPacketsDiscarded": 3859,
+              "audioLevel": 0,
+              "audioDetected": 0,
+              "jitter": 2,
+              "jitterBuffer": 1,
+              "jitterBufferPreferred": 40,
+              "decodingCNG": 0,
+              "decodingMutedOutput": 11845,
+              "decodingNormal": 10752,
+              "decodingPLC": 280,
+              "decodingPLCCNG": 12078,
+              "accelerateRate": 0,
+              "expandRate": 100,
+              "preemptiveExpandRate": 0,
+              "speechExpandRate": 0,
+              "secondaryDecodedRate": 0,
+              "opSilence": 13511,
+              "opNormal": 8950,
+              "opMerge": 55,
+              "opExpand": 58,
+              "opAccelerate": 265,
+              "opPreemptiveExpand": 271,
+              "opCNG": 0,
+              "delayEstimate": 100,
+              "audioJitterBuffer": {
+                "last": 1,
+                "mean": 25,
+                "p75": 50,
+                "p95": 65,
+                "p99": 90,
+                "max": 189
+              },
+              "audioJitterDelay": {
+                "last": 100,
+                "mean": 103,
+                "p75": 115,
+                "p95": 130,
+                "p99": 140,
+                "max": 155
+              },
+              "audioJitterTarget": {
+                "last": 40,
+                "mean": 42,
+                "p75": 45,
+                "p95": 65,
+                "p99": 65,
+                "max": 60
+              },
+              "audioPlayoutUnderruns": {
+                "last": 0,
+                "mean": 0,
+                "p75": 0,
+                "p95": 0,
+                "p99": 0,
+                "max": 0
+              },
+              "relativeReceptionDelay": {
+                "last": 0,
+                "mean": 0,
+                "p75": 0,
+                "p95": 0,
+                "p99": 0,
+                "max": 0
+              },
+              "relativePlayoutDelay": {
+                "last": 0,
+                "mean": 0,
+                "p75": 0,
+                "p95": 0,
+                "p99": 0,
+                "max": 0
+              }
+            }
+          ],
+          "489193290881564694": [
+            {
+              "type": "audio",
+              "ssrc": 262961,
+              "sinkWant": "100",
+              "codec": {
+                "id": 120,
+                "name": "opus"
+              },
+              "bytesReceived": 7423,
+              "packetsReceived": 58,
+              "packetsLost": 0,
+              "fractionLost": null,
+              "fecPacketsReceived": 38,
+              "fecPacketsDiscarded": 36,
+              "audioLevel": 0,
+              "audioDetected": 0,
+              "jitter": 2,
+              "jitterBuffer": 2,
+              "jitterBufferPreferred": 20,
+              "decodingCNG": 0,
+              "decodingMutedOutput": 22944,
+              "decodingNormal": 119,
+              "decodingPLC": 8,
+              "decodingPLCCNG": 22948,
+              "accelerateRate": 0,
+              "expandRate": 100,
+              "preemptiveExpandRate": 0,
+              "speechExpandRate": 0,
+              "secondaryDecodedRate": 0,
+              "opSilence": 22994,
+              "opNormal": 59,
+              "opMerge": 0,
+              "opExpand": 0,
+              "opAccelerate": 0,
+              "opPreemptiveExpand": 22,
+              "opCNG": 0,
+              "delayEstimate": 82,
+              "audioJitterBuffer": {
+                "last": 2,
+                "mean": 2,
+                "p75": 5,
+                "p95": 5,
+                "p99": 5,
+                "max": 50
+              },
+              "audioJitterDelay": {
+                "last": 82,
+                "mean": 85,
+                "p75": 90,
+                "p95": 95,
+                "p99": 100,
+                "max": 118
+              },
+              "audioJitterTarget": {
+                "last": 20,
+                "mean": 20,
+                "p75": 25,
+                "p95": 25,
+                "p99": 25,
+                "max": 20
+              },
+              "audioPlayoutUnderruns": {
+                "last": 0,
+                "mean": 0,
+                "p75": 0,
+                "p95": 0,
+                "p99": 0,
+                "max": 0
+              },
+              "relativeReceptionDelay": {
+                "last": 0,
+                "mean": 0,
+                "p75": 0,
+                "p95": 0,
+                "p99": 0,
+                "max": 0
+              },
+              "relativePlayoutDelay": {
+                "last": 0,
+                "mean": 0,
+                "p75": 0,
+                "p95": 0,
+                "p99": 0,
+                "max": 0
+              }
+            }
+          ],
+          "312564164570644491": [
+            {
+              "type": "audio",
+              "ssrc": 260202,
+              "sinkWant": "100",
+              "codec": {
+                "id": 120,
+                "name": "opus"
+              },
+              "bytesReceived": 694166,
+              "packetsReceived": 5049,
+              "packetsLost": 0,
+              "fractionLost": null,
+              "fecPacketsReceived": 2919,
+              "fecPacketsDiscarded": 2919,
+              "audioLevel": 0.077789306640625,
+              "audioDetected": 1,
+              "jitter": 2,
+              "jitterBuffer": 12,
+              "jitterBufferPreferred": 20,
+              "decodingCNG": 0,
+              "decodingMutedOutput": 12508,
+              "decodingNormal": 10042,
+              "decodingPLC": 246,
+              "decodingPLCCNG": 12644,
+              "accelerateRate": 0,
+              "expandRate": 0,
+              "preemptiveExpandRate": 0,
+              "speechExpandRate": 0,
+              "secondaryDecodedRate": 0,
+              "opSilence": 14194,
+              "opNormal": 8536,
+              "opMerge": 26,
+              "opExpand": 53,
+              "opAccelerate": 61,
+              "opPreemptiveExpand": 62,
+              "opCNG": 0,
+              "delayEstimate": 84,
+              "audioJitterBuffer": {
+                "last": 2,
+                "mean": 12,
+                "p75": 25,
+                "p95": 45,
+                "p99": 65,
+                "max": 90
+              },
+              "audioJitterDelay": {
+                "last": 75,
+                "mean": 87,
+                "p75": 95,
+                "p95": 115,
+                "p99": 120,
+                "max": 128
+              },
+              "audioJitterTarget": {
+                "last": 20,
+                "mean": 21,
+                "p75": 25,
+                "p95": 45,
+                "p99": 45,
+                "max": 80
+              },
+              "audioPlayoutUnderruns": {
+                "last": 0,
+                "mean": 0,
+                "p75": 0,
+                "p95": 0,
+                "p99": 0,
+                "max": 0
+              },
+              "relativeReceptionDelay": {
+                "last": 0,
+                "mean": 0,
+                "p75": 0,
+                "p95": 0,
+                "p99": 0,
+                "max": 0
+              },
+              "relativePlayoutDelay": {
+                "last": 0,
+                "mean": 0,
+                "p75": 0,
+                "p95": 0,
+                "p99": 0,
+                "max": 0
+              }
+            }
+          ]
+        },
+        "outbound": [
+          {
+            "type": "audio",
+            "ssrc": 272918,
+            "sinkWant": "100",
+            "codec": {
+              "id": 120,
+              "name": "opus"
+            },
+            "bytesSent": 209960,
+            "packetsSent": 1489,
+            "packetsLost": 0,
+            "fractionLost": 0,
+            "audioLevel": 0.000152587890625,
+            "audioDetected": 0,
+            "framesCaptured": 24567,
+            "framesRendered": 24267,
+            "noiseCancellerProcessTime": 14901
+          }
+        ]
+      },
+      "context": "default",
+      "index": 0
+    }
+  ]
+]

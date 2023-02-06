@@ -1,22 +1,22 @@
 from django.contrib import admin
-from app.models import MunkaVallalo, MunkaAdo, Munka, Jelentkezes
+from app.models import *
 
 # /admin oldal modell megtekintői
 # munkaVallalo
-class MunkaVallaoAdmin(admin.ModelAdmin):
-    fields = ["bemutatkozas",
-              "telefon",
-              "email",
-              "eretkeles",
-              "erdekelt"]
+# class MunkaVallaoAdmin(admin.ModelAdmin):
+#     fields = ["bemutatkozas",
+#               "telefon",
+#               "email",
+#               "eretkeles",
+#               "erdekelt"]
 
-# munkaAdo
-class MunkaAdoAdmin(admin.ModelAdmin):
-    fields = ["nev",
-              "bemutatkozas",
-              "telefon",
-              "email",
-              "ertekeles"]
+# # munkaAdo
+# class MunkaAdoAdmin(admin.ModelAdmin):
+#     fields = ["nev",
+#               "bemutatkozas",
+#               "telefon",
+#               "email",
+#               "ertekeles"]
 
 # munka
 class MunkdaAdmin(admin.ModelAdmin):
@@ -33,14 +33,15 @@ class MunkdaAdmin(admin.ModelAdmin):
 
 # jelentkezes
 class JelentkezesAdmin(admin.ModelAdmin):
-    fields = ["munkaltato",
-              "munkaVallalo",
+    fields = ["munkaVallalo",
               "munka",
               "ido",
-              "berigeny"]
+              "berigeny",
+              "bemutatkozas",
+              "melleklet"]
     
 # modellek regisztrálása a az admin felületre
-admin.site.register(MunkaVallalo, MunkaVallaoAdmin)
-admin.site.register(MunkaAdo, MunkaAdoAdmin)
+# admin.site.register(MunkaVallalo, MunkaVallaoAdmin)
+# admin.site.register(MunkaAdo, MunkaAdoAdmin)
 admin.site.register(Munka, MunkdaAdmin)
 admin.site.register(Jelentkezes, JelentkezesAdmin)

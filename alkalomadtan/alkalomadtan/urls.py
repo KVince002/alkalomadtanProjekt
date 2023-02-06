@@ -17,17 +17,26 @@ import imp
 # from django import views
 from app import views
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import path, include
 
 urlpatterns = [
     # Admin oldal
     path('admin/', admin.site.urls),
+
+    # Főbb oldalak
     path("", views.Homepage, name="Kezdőlap"),
     path("rolunk/", views.Rolunk, name="Rolunk"),
     path("munkak/", views.Allasok, name="Munak"),
     path("blog/", views.Blog, name="Blog"),
 
+    # auth oldalak
+    path("bejelentkezes/", auth_views.LoginView.as_view(template_name="app/auth/bejelentkezes_auth.html"), name="bejelentkezes_auth"),
+    path("jelszohelyre/", auth_views.PasswordResetView.as_view(template_name="app/auth/jelszoHelyre_auth.html"), name="jelszoHelyre_auth"),
+    path("jelszovalt/", auth_views.PasswordChangeView.as_view(template_name="app/auth/jelszoValt_auth.html"), name="jelszoValt_auth"),
+
     # teszt oldalak
     path("tesztRegisztral/", views.tesztRegisztral, name="tesztRegisztral"),
-    path("tesztRegisztralMunkavallalo/", views.tesztRegisztralMunkaV, name="tesztRegisztralMunkaV")
+    path("tesztFeltolt/", views.tesztFileFel, name="tesztFileFel"),
+    path("tesztBejelentkezes/", views.tesztBejelentkez, name="tesztBejelentkezes")
 ]

@@ -1,0 +1,30 @@
+{% extends 'app/layout/commonhead0.html' %}
+{% block content %}
+{% load static %}
+
+{% if user.is_authenticated %}
+{% comment %} form hibakeresés {% endcomment %}
+<!-- Form Errors -->
+{% if form.errors %}
+    <ul class="errors">
+        {% for error in form.errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% comment %} Maga a form {% endcomment %}
+<form method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="mydiv">
+            <label class="mylabel">{{ field.label }}</label>
+            {{ field }}
+        </div>
+    {% endfor %}
+    <input type="submit" value="Regisztrálás" class="btn btn-primary">
+</form>
+{% else %}
+nem vagy bejelentkezve!
+{% endif %}
+{% endblock %}

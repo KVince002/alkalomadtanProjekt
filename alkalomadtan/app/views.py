@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.template import loader
 from django.http import HttpRequest, HttpResponse
 from app.forms import *
 from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from app.models import *
 
 # Create your views here.
@@ -52,54 +53,68 @@ def tesztRegisztral(request):
 
         # valudálás ellenőrzés
         if tesztRegisztraciosLap.is_valid():
-            regisztraltFelhasznalo = tesztRegisztraciosLap.Mentes()
-
+            tRL_Ment =  tesztRegisztraciosLap.Mentes()
             #frissen regisztrál felhasználó regisztrálása
-            login(request, regisztraltFelhasznalo)
-            
-            # mi ként szeretne majd regisztrálni? Munka adó vagy munka vállaló?
+            login(request, tRL_Ment)
+            return redirect("Kezdőlap")
     else:
         tesztRegisztraciosLap = Regisztralas()
     
     # válasz
-    template = loader.get_template("app/tesztRegisztral.html")
+    template = loader.get_template("app/teszt/tesztRegisztral.html")
     context = {
         "cim": "⚠️ tesztRegisztrálás",
         "form": tesztRegisztraciosLap
     }
     return HttpResponse(template.render(context,request))
 
-# regisztrálás munkavállalóként
-def tesztRegisztralMunkaV(request):
-    print("⚠️ test regisztáció munkavállalóként / tesztRegisztralMunkaV(request)")
+# dokumentum feltöltés
+def tesztFileFel(request):
+    print("⚠️ teszt file feltöltés / tesztFileFel()")
+    if request.POST:
+        fileFelForm = JelentkezesForm(request.POST, request.FILES)
+        if fileFelForm.is_valid():
+            print(feldolgozo)
+            feldolgozo = fileFelForm.save(commit=False)
+            feldolgozo.munkaVallalo = User.objects.get(id=request.user.id)
+            feldolgozo.ido = django.utils.timezone.now
+            feldolgozo.save()
+            print(feldolgozo)
 
-    if request.method == "POST":
-        tesztRegisztraciosLap = Regisztralas(request.POST, prefix="form")
-        tesztMunkaVallalo_Kiegeszito = MunkaVallalo_Kiegeszito(request.POST, prefix="from1")
-
-        if tesztRegisztraciosLap.is_valid() and tesztMunkaVallalo_Kiegeszito.is_valid():
-            regisztraltFelhasznalo = tesztRegisztraciosLap.Mentes()
-
-            #frissen regisztrál felhasználó regisztrálása
-            login(request, regisztraltFelhasznalo)
-            munkaVallaoKieg = MunkaVallalo_Kiegeszito.Mentes(request.user.username, request.user.email)
-            munkaVallaoKieg.save()
-            
+            fileFelForm.save()
+            print("Fájl menteve?")
     else:
-        tesztRegisztraciosLap = Regisztralas(prefix="form")
-        tesztMunkaVallalo_Kiegeszito = MunkaVallalo_Kiegeszito(prefix="form1")
-
-        # if tesztRegisztraciosLap.is_valid() and tesztMunkaVallalo_Kiegeszito.is_valid():
-        #     regisztraltFelhasznalo = tesztRegisztraciosLap.Mentes()
-
-        #     #frissen regisztrál felhasználó regisztrálása
-        #     login(request, regisztraltFelhasznalo)
-        #     munkaVallaoKieg = MunkaVallalo_Kiegeszito.Mentes(request.user.username, request.user.email)
-
-    template = loader.get_template("app/tesztRegisztral_es_Munkavallalo.html")
+        fileFelForm = JelentkezesForm()
+    
+    template = loader.get_template("app/teszt/tesztForm.html")
     context = {
-        "cim": "⚠️ tesztRegisztrálá és munkavállaló",
-        "form": tesztRegisztraciosLap,
-        "form1": tesztMunkaVallalo_Kiegeszito
+        "cim": "⚠️ fájl fel, jelentkezes form",
+        "form": fileFelForm
     }
     return HttpResponse(template.render(context,request))
+
+# teszt bejelentkezés
+def tesztBejelentkez(request):
+    print("⚠️ teszt bejelentkezés / tesztBejelentkezes()")
+    if request.method == "POST":
+        beAuth = AuthenticationForm(data=request.POST)
+        if beAuth.is_valid():
+            print("valid")
+            felhasznaloNev = beAuth.cleaned_data.get("username")
+            jelszo = beAuth.cleaned_data.get("password")
+            felhasznalo = authenticate(email=felhasznaloNev, password=jelszo)
+            print(felhasznalo)
+            if felhasznalo is not None:
+                login(request, felhasznalo)
+                print("bejelentkezve: ")
+                return redirect("Kezdőlap")
+            else:
+                print("elbaszodott a bejelentkezes")
+    beAuth = AuthenticationForm()
+
+    template = loader.get_template("app/teszt/tesztBejelentkez.html")
+    context = {
+        "cim": "⚠️ teszt bejelentkezés",
+        "form": beAuth
+    }
+    return HttpResponse(template.render(context, request))

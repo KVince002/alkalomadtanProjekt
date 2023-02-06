@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from app.models import MunkaAdo, MunkaVallalo, Munka, Jelentkezes
+from app.models import *
 
 # autentikáló mudolok
 from django.contrib.auth.models import User
@@ -9,7 +9,7 @@ from django.core.exceptions import ValidationError
 from django.forms.fields import EmailField
 
 # kollektív fiók regisztrálás
-class Regisztralas(forms.Form):
+class Regisztralas(forms.Form):   
     felhasznaloNev = forms.CharField(label="Felhasználónév", min_length=3, max_length=150)
     eloNev = forms.CharField(label="Előnév", max_length=150)
     utoNev = forms.CharField(label="Utónév", max_length=150)
@@ -50,7 +50,7 @@ class Regisztralas(forms.Form):
         #     raise ValidationError("Biztos hogy kitöltötte a két jelszőmezőt?")
         return jelszo2
 
-    def Mentes(self, commit=True):
+    def Mentes(self):
         felhasznalo = User.objects.create_user(
             username = self.clean_felhasznalo(),
             email = self.clean_email(),
@@ -62,35 +62,12 @@ class Regisztralas(forms.Form):
         
         return felhasznalo
 
-# munka vállaló kiegészítése
-class MunkaVallalo_Kiegeszito(forms.ModelForm):
+class JelentkezesForm(ModelForm):
     class Meta:
-        model = MunkaVallalo
-        fields = ("bemutatkozas","telefon", "erdekelt")
-    bemutatkozas = forms.Textarea()
-    telefon = forms.CharField(label="Telefonszám", max_length=11, required=True)
-    erdekelt = forms.ChoiceField(choices=MunkaVallalo.erdekeltsegek, required=False, widget=forms.CheckboxSelectMultiple())
+        model = Jelentkezes
+        fields = ["munka","bemutatkozas", "berigeny", "melleklet"]
 
-    def Mentes(self, commit = True, UserId="", UserEmail=""):
-        munkavallaoKieg = MunkaVallalo(
-            UserId,
-            self.cleaned_data["bemutatkozas"],
-                        self.cleaned_data["telefon"],
-                        UserEmail,
-            self.cleaned_data["erdekelt"]
-            )
-        munkavallaoKieg.save()
-        return f"{UserId}, {UserEmail}, {self.cleaned_data['telefon']} mentette el."
-
-# munkaadó kiegészítése
-class MunkaAdo_Kiegeszito(forms.ModelForm):
-    class Meta:
-        model = MunkaAdo
-        fields = ("nev","bemutatkozas","telefon", "email")
-    nev = forms.CharField(label="Munkaadó neve",max_length=255)
-    bemutatkozas = forms.Textarea()
-    telefon = forms.CharField(label="Telefonszám", max_length=11, required=True)
-    email = forms.EmailField(label="Mukadó email címe")
-
-    def Mentes(self, commit = True, UserId=""):
-        munkaAdoKieg = MunkaAdo("")
+# nagyon bugyuta form
+class BejelentkezesForm(forms.Form):
+    email = forms.EmailField(label="Email címe", widget=forms.EmailInput)
+    jelszo = forms.CharField(label="Jelszava", widget=forms.PasswordInput)

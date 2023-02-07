@@ -62,10 +62,15 @@ class Regisztralas(forms.Form):
         
         return felhasznalo
 
-class JelentkezesForm(ModelForm):
+class JelentkezesFormModel(forms.ModelForm):
     class Meta:
         model = Jelentkezes
         fields = ["munka","bemutatkozas", "berigeny", "melleklet"]
+
+class JelentkezesForm(forms.Form):
+    berigeny = forms.IntegerField()
+    bemutatkozas = forms.Textarea()
+    melleklet = forms.FileField()
 
 # nagyon bugyuta form
 class BejelentkezesForm(forms.Form):

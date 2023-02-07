@@ -2,37 +2,38 @@
 {% block content %}
 {% load static %}
 
+<div class = "login-box">
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% endif %}
 
 {% if next %}
     {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
+    <p>Már be vagy jelentkezve! Nem kell erre az oldalra lépned!</p>
     {% else %}
-    <p>Please login to see this page.</p>
+    <p>Kérlek jelentkezz be hogy meg tudd tekinteni az oldalt!</p>
     {% endif %}
 {% endif %}
 
-<form method="post">
+<form method="post" class="form">
+    <h2>Bejelentkezés</h2>
 {% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
-
+<div class="input-box">
+    {{ form.username.label_tag }}
+    {{ form.username }}
+</div>
+<div class="input-box">
+    {{ form.password.label_tag }}
+    {{ form.password }}
+</div>
+<div>
 <input type="submit" value="login">
 <input type="hidden" name="next" value="{{ next }}">
+</div>
 </form>
 
 {# Assumes you set up the password_reset view in your URLconf #}
 <p><a href="{% url 'jelszoHelyre_auth' %}">Lost password?</a></p>
+</div>
 
 {% endblock %}

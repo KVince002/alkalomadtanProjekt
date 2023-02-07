@@ -74,13 +74,15 @@ def tesztFileFel(request):
     if request.POST:
         fileFelForm = JelentkezesForm(request.POST, request.FILES)
         if fileFelForm.is_valid():
-            print(feldolgozo)
-            feldolgozo = fileFelForm.save(commit=False)
-            feldolgozo.munkaVallalo = User.objects.get(id=request.user.id)
-            feldolgozo.ido = django.utils.timezone.now
-            feldolgozo.save()
-            print(feldolgozo)
+            # munkaVallalo = User.objects.get(id=request.user.id)
+            # ido = django.utils.timezone.now
+            # berigenyForm = fileFelForm.cleaned_data.get("berigeny")
+            # bemutatkozasFrom = fileFelForm.cleaned_data.get("bemutatkozas")
+            # mellekletForm = fileFelForm.cleaned_data.get("melleklet")
 
+            # modeltMent = Jelentkezes.objects.create(munkaVallalo=munkaVallalo, ido=ido, berigeny = berigenyForm, bemutatkozas = bemutatkozasFrom, melleklet =mellekletForm)
+            # print(modeltMent)
+            # modeltMent.save()
             fileFelForm.save()
             print("Fájl menteve?")
     else:

@@ -29,6 +29,8 @@ urlpatterns = [
     path("rolunk/", views.Rolunk, name="Rolunk"),
     path("munkak/", views.Allasok, name="Munak"),
     path("blog/", views.Blog, name="Blog"),
+    path("profil/", views.Profil, name="Profil"),
+    path("profil/ujmunka/", views.Profil_UjMunka, name="ProfilUjMunka"),
 
     # auth oldalak
     path("bejelentkezes/", auth_views.LoginView.as_view(template_name="app/auth/bejelentkezes_auth.html"), name="bejelentkezes_auth"),

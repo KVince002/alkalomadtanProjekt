@@ -76,3 +76,16 @@ class JelentkezesForm(forms.Form):
 class BejelentkezesForm(forms.Form):
     email = forms.EmailField(label="Email címe", widget=forms.EmailInput)
     jelszo = forms.CharField(label="Jelszava", widget=forms.PasswordInput)
+
+class MunkaFrom(ModelForm):
+    class Meta:
+        model = Munka
+        fields = "__all__"
+        exclude = ["publikalo", "katt"]
+
+    nev = forms.CharField(label="Munka neve", max_length=250)
+    leiras = forms.TextInput()
+    helye = forms.CharField(label="Munkka végzésének a helye:", max_length=150)
+    berMin = forms.IntegerField(label="Minimum bér")
+    berMax = forms.IntegerField(label="Maximum bér")
+    munkaKezd = forms.DateField(label="Munka kezdésének az időpontja")

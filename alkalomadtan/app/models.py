@@ -14,8 +14,6 @@ class Munka(models.Model):
     nev = models.CharField(max_length=255, null=False)
     # munka leírása
     leiras = models.TextField(default="", null=False)
-    # munka értéelése
-    ertekeles = models.FloatField(default=0)
     # munka helye
     helye = models.CharField(default="", max_length=255)
     # kattintas
@@ -28,8 +26,9 @@ class Munka(models.Model):
     berMax = models.IntegerField(null=True)
     # mikor fog amjd a munka kezdődni
     munkaKezd = models.DateTimeField()
+    # munka napok kivéve, át dolgozás kell neki
     # munkanapok és óraszámok. Ez egy map/szótár-t fog majd tárolni. A szótár inex: napok; érték: óraköz
-    munkaNapok = models.TextField()
+    # munkaNapok = models.TextField()
 
     def __str__(self):
         return f"Munka neve: {self.nev}, publikáló: {self.publikalo}, hely: {self.helye}"

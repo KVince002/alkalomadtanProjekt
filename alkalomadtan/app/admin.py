@@ -22,14 +22,12 @@ from app.models import *
 class MunkdaAdmin(admin.ModelAdmin):
     fields = ["nev",
               "leiras",
-              "ertekeles",
               "helye",
               "katt",
               "publikalo",
               "berMin",
               "berMax",
-              "munkaKezd",
-              "munkaNapok"]
+              "munkaKezd"]
 
 # jelentkezes
 class JelentkezesAdmin(admin.ModelAdmin):

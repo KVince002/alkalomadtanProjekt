@@ -42,6 +42,52 @@ def Blog(request):
         }
     return HttpResponse(template.render(context,request))
 
+# profil
+def Profil(request):
+    # ki van bejelentkezve?
+    userId = request.user.id
+    userUsername = request.user.username
+    felhasznalo = request.user
+    print(f"Profil(request) - {userUsername}, ({userId})")
+
+
+    template = loader.get_template("app/auth/profil.html")
+    context = {
+        "cim": "Profilod",
+        "felhasznalo":felhasznalo
+        }
+    return HttpResponse(template.render(context,request))
+
+# profil / új munka
+def Profil_UjMunka(request):
+    userId = request.user.id
+    userUsername = request.user.username
+    felhasznalo = request.user
+    print(f"Profil_UjMunka(request) - {userUsername} ({userId})")
+    if request.POST:
+        if request.user.is_authenticated:
+            ujMunkaForm = MunkaFrom(request.POST)
+            for filed in ujMunkaForm:
+                print(filed)
+            
+            if ujMunkaForm.is_valid():
+                mentendo = ujMunkaForm.save(commit=False)
+                mentendo.publikalo = User.objects.get(pk=request.user.id)
+                mentendo.save()
+                print("Mentve! ")
+            else:
+                print("invalid form")
+                print(ujMunkaForm.errors)
+    else:
+        ujMunkaForm = MunkaFrom()
+    template = loader.get_template("app/ujmunka.html")
+    context = {
+        "cim": "Profilod",
+        "felhasznalo":felhasznalo,
+        "form":ujMunkaForm
+        }
+    return HttpResponse(template.render(context,request))
+
 # tesztek
 # regisztrálás próbája
 def tesztRegisztral(request):

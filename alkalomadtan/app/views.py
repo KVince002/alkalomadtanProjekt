@@ -5,6 +5,7 @@ from app.forms import *
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from app.models import *
+import os
 
 # Create your views here.
 # kezdőlap
@@ -74,7 +75,7 @@ def Profil_UjMunka(request):
                 mentendo = ujMunkaForm.save(commit=False)
                 mentendo.publikalo = User.objects.get(pk=request.user.id)
                 mentendo.save()
-                print("Mentve! ")
+                print("Mentve!")
             else:
                 print("invalid form")
                 print(ujMunkaForm.errors)
@@ -118,21 +119,25 @@ def tesztRegisztral(request):
 def tesztFileFel(request):
     print("⚠️ teszt file feltöltés / tesztFileFel()")
     if request.POST:
-        fileFelForm = JelentkezesForm(request.POST, request.FILES)
+        fileFelForm = JelentkezesFormModel(request.POST, request.FILES)
+        for filed in fileFelForm:
+                print(filed)
         if fileFelForm.is_valid():
-            # munkaVallalo = User.objects.get(id=request.user.id)
-            # ido = django.utils.timezone.now
-            # berigenyForm = fileFelForm.cleaned_data.get("berigeny")
-            # bemutatkozasFrom = fileFelForm.cleaned_data.get("bemutatkozas")
-            # mellekletForm = fileFelForm.cleaned_data.get("melleklet")
-
-            # modeltMent = Jelentkezes.objects.create(munkaVallalo=munkaVallalo, ido=ido, berigeny = berigenyForm, bemutatkozas = bemutatkozasFrom, melleklet =mellekletForm)
-            # print(modeltMent)
-            # modeltMent.save()
-            fileFelForm.save()
-            print("Fájl menteve?")
+            modelMento = fileFelForm.save(commit=False)
+            modelMento.munkaVallalo = User.objects.get(id=request.user.id)
+            modelMento.ido = django.utils.timezone.now()
+            modelMento.felhId = str(request.user.id)
+            print(modelMento.felhId)
+            print(type(modelMento.felhId))
+            modelMento.save()
+        else:
+            print("invalid form")
+            print(fileFelForm.cleaned_data.get("melleklet"))
+            print(fileFelForm.errors.as_text)
+            print(fileFelForm.errors.values)
+            print(fileFelForm.errors.get)
     else:
-        fileFelForm = JelentkezesForm()
+        fileFelForm = JelentkezesFormModel(request.FILES)
     
     template = loader.get_template("app/teszt/tesztForm.html")
     context = {

@@ -62,15 +62,23 @@ class Regisztralas(forms.Form):
         
         return felhasznalo
 
-class JelentkezesFormModel(forms.ModelForm):
+class JelentkezesFormModel(ModelForm):
     class Meta:
         model = Jelentkezes
-        fields = ["munka","bemutatkozas", "berigeny", "melleklet"]
-
-class JelentkezesForm(forms.Form):
-    berigeny = forms.IntegerField()
+        fields = "__all__"
+        exclude =["munkaVallalo","ido", "felhId"]
+    
+    berigeny = forms.IntegerField(label="Bérigényed")
     bemutatkozas = forms.Textarea()
-    melleklet = forms.FileField()
+    melleklet = forms.FileField(label="Melléklet", required=True)
+
+    def save(self,commit=True):
+        instance = super(JelentkezesFormModel,self).save(commit=False)
+        fajl = self["melleklet"].value()
+        print(fajl)
+        if commit:
+            instance.save()
+        return instance    
 
 # nagyon bugyuta form
 class BejelentkezesForm(forms.Form):

@@ -6,7 +6,7 @@ import django.contrib.auth.models
 # ido
 from time import timezone
 from datetime import datetime
-#from django.utils.timezone import timezone
+import os
 
 # # munka
 class Munka(models.Model):
@@ -34,8 +34,9 @@ class Munka(models.Model):
         return f"Munka neve: {self.nev}, publikáló: {self.publikalo}, hely: {self.helye}"
 
 # jelentkezés modell
-def FajlUtvonal(instance, filename):
-    return "felhasznalo_{0}/{1}".format(instance.user.id, filename)
+def fajlNevGeneralo(self, fajlnev):
+    url = "feltoltottDokumentumok/felh_%s/%s" % (self.felhId, fajlnev)
+    return url
 # rekreálás a megbeszéltek alapján
 class Jelentkezes(models.Model):
     # mukavállaló
@@ -48,8 +49,9 @@ class Jelentkezes(models.Model):
     berigeny = models.IntegerField(null=True, default=0)
     # bemutatkozás
     bemutatkozas = models.TextField(null=True, default="A jelentkező nem írt leírást.")
-    # önéletrajz
-    melleklet = models.FileField(null = False, upload_to=f"feltoltottDokumentumok/{FajlUtvonal}")
+    # önéletrajz 
+    felhId = models.CharField(max_length=10, null=False, default="")
+    melleklet = models.FileField(null = False, upload_to=fajlNevGeneralo)
 
     def __str__(self):
         return f"{self.munka} - {self.ido}-kor jelentkezett: {self.munkaVallalo}"

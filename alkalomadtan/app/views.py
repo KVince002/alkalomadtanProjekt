@@ -52,7 +52,7 @@ def Profil(request):
     print(f"Profil(request) - {userUsername}, ({userId})")
 
 
-    template = loader.get_template("app/auth/profil.html")
+    template = loader.get_template("app/auth/profilePage.html")
     context = {
         "cim": "Profilod",
         "felhasznalo":felhasznalo

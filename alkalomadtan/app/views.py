@@ -65,12 +65,12 @@ def Profil_UjMunka(request):
     userUsername = request.user.username
     felhasznalo = request.user
     print(f"Profil_UjMunka(request) - {userUsername} ({userId})")
+
     if request.POST:
         if request.user.is_authenticated:
             ujMunkaForm = MunkaFrom(request.POST)
-            for filed in ujMunkaForm:
-                print(filed)
-            
+            # for filed in ujMunkaForm:
+            #     print(filed)
             if ujMunkaForm.is_valid():
                 mentendo = ujMunkaForm.save(commit=False)
                 mentendo.publikalo = User.objects.get(pk=request.user.id)
@@ -78,14 +78,33 @@ def Profil_UjMunka(request):
                 print("Mentve!")
             else:
                 print("invalid form")
-                print(ujMunkaForm.errors)
+                print(ujMunkaForm.errors)         
     else:
         ujMunkaForm = MunkaFrom()
-    template = loader.get_template("app/ujmunka.html")
+    template = loader.get_template("app/auth/profilePageAd.html")
+
+    # munkák visszadása
+    munkak = []
+    try:
+        munkak = Munka.objects.all().filter(publikalo = request.user.id)
+        print(munkak)
+    except:
+        munkak = None
+    
+    # jelentkezések
+    jelenkezok = []
+    try:
+        jelenkezok = Jelentkezes.objects.all().filter(munka = munkak.id)
+        print(jelenkezok)
+    except:
+        jelenkezok = None
+
     context = {
         "cim": "Profilod",
         "felhasznalo":felhasznalo,
-        "form":ujMunkaForm
+        "form":ujMunkaForm,
+        "munka": munkak,
+        "jelentkezo": jelenkezok
         }
     return HttpResponse(template.render(context,request))
 

@@ -15,6 +15,33 @@
 
     <title>{{ cim }}</title>
 </head>
+<section class="header">
+    <nav class="logo">
+        <a href="index.html"><img src="images/logo.png" alt=""></a>
+    </nav>
+    <div class="container">
+        <div id="asd">
+            <h1 class="asd">asd</h1>
+            <div class="CTA">
+                <h1>ÓRÁNKÉNT 3000Ft</h1>
+            </div>
+        </div>
+        <div class="leftbox links">
+            <nav>
+                <a href="{% url 'Profil' %}">
+                    <i class="fa fa-user active"></i>
+                </a>
+                <a href="profilePageApplied.html">
+                    <i class="fa fa-briefcase"></i>
+                </a>
+                <a href="{% url 'ProfilUjMunka' %}">
+                    <i class="fa fa-plus-circle"></i>
+                </a>
+                <a href="profilePageFile.html">
+                    <i class="fa fa-file"></i>
+                </a>
+            </nav>
+        </div>
 {% block content %}
 {% endblock %}
 {% load static %}

@@ -1,33 +1,9 @@
 {% extends 'app/layout/commonhead2.html' %}
 {% block content %}
 {% load static %}
-    <section class="header">
-        <nav class="logo">
-            <a href="index.html"><img src="images/logo.png" alt=""></a>
-        </nav>
-        <div class="container">
-            <div id="asd">
-                <h1 class="asd">asd</h1>
-                <div class="CTA">
-                    <h1>ÓRÁNKÉNT 3000Ft</h1>
-                </div>
-            </div>
-            <div class="leftbox links">
-                <nav>
-                    <a href="#">
-                        <i class="fa fa-user active"></i>
-                    </a>
-                    <a href="profilePageApplied.html">
-                        <i class="fa fa-briefcase"></i>
-                    </a>
-                    <a href="profilePageAd.html">
-                        <i class="fa fa-plus-circle"></i>
-                    </a>
-                    <a href="profilePageFile.html">
-                        <i class="fa fa-file"></i>
-                    </a>
-                </nav>
-            </div>
+
+{% if felhasznalo.is_authenticated %}
+
             <div class="rightbox">
                 <div class="profile">
                     <h1>Személyes adatok</h1>
@@ -43,4 +19,18 @@
             </div>
             </div>
     </section>
+{% else %}
+<div class="rightbox">
+    <div class="profile">
+        <h1>Nem nem vagy bejelentezeve! Kérlek jelentkbe, vagy hozz lére egy profilt!</h1>
+        <h2>Bejelentkezés</h2>
+        <a href="{% url 'bejelentkezes_auth' %}">Bejelentkezés</a>
+        <h2>Regisztráció</h2>
+        {% comment %} Kell majd egy rendes regisztrációt írni! {% endcomment %}
+        <a href="{% url 'tesztRegisztral' %}">Regisztrálás</a>
+    </div>
+</div>
+</div>
+</section>
+    {% endif %}
 {% endblock %}

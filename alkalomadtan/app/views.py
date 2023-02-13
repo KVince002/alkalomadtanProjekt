@@ -6,6 +6,8 @@ from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from app.models import *
 import os
+import sys
+import traceback
 
 # Create your views here.
 # kezdőlap
@@ -84,27 +86,18 @@ def Profil_UjMunka(request):
     template = loader.get_template("app/auth/profilePageAd.html")
 
     # munkák visszadása
-    munkak = []
+    munkak = ""
     try:
-        munkak = Munka.objects.all().filter(publikalo = request.user.id)
-        print(munkak)
+        munkak = list(Munka.objects.filter(publikalo = request.user.id).values())
     except:
+        print(traceback.format_exc())
         munkak = None
     
-    # jelentkezések
-    jelenkezok = []
-    try:
-        jelenkezok = Jelentkezes.objects.all().filter(munka = munkak.id)
-        print(jelenkezok)
-    except:
-        jelenkezok = None
-
     context = {
         "cim": "Profilod",
         "felhasznalo":felhasznalo,
         "form":ujMunkaForm,
-        "munka": munkak,
-        "jelentkezo": jelenkezok
+        "munka": munkak
         }
     return HttpResponse(template.render(context,request))
 

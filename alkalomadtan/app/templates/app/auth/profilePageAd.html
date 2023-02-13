@@ -36,25 +36,34 @@
                             <td>Megtekintés: </td>
                             <td>{{i.katt}}</td>
                         </tr>
-                        <tr>
-                            {% if jelentkezok is not none %}
-                            <td>Jelentkezők: </td>
-                            <td>
-                                {% for j in jelentkezok %}
-                                <p>Név: {{j.munkaVallalo}} bérigény: {{j.berigeny}}</p>
-                                {% comment %} Részletek-linken tudja meg az adott személy jelentkezéséról részleteket {% endcomment %}
-                                <a >Részletek</a>
-                                {% endfor %}
-                            </td>
-                            {% else %}
-                                <td>Jelentkezők: </td>
-                                <td>Még nem jelentkezett senki sem!</td>
-                            {% endif %}
-                        </tr>
                     </tbody>
                 </table>
             </div>
             {% endfor %}
+            {% comment %} új munka létrehozása {% endcomment %}
+            <h2>Új munka kiadása</h2>
+            <div>
+                <!-- Form hibái -->
+{% if form.errors %}
+<ul class="errors">
+    {% for error in form.errors %}
+        <li>{{ error }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% comment %} Maga a form {% endcomment %}
+<form method="POST">
+{% csrf_token %}
+{% for field in form %}
+    <div class="">
+        <label class="">{{ field.label }}</label>
+        {{ field }}
+    </div>
+{% endfor %}
+<input type="submit" value="Publikálás" class="btn btn-primary">
+</form>
+            </div>
         </div>
     </div>
     </div>

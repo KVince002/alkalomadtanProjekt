@@ -37,9 +37,10 @@
                 <a href="{% url 'ProfilUjMunka' %}">
                     <i class="fa fa-plus-circle"></i>
                 </a>
-                <a href="profilePageFile.html">
+                {% comment %} szerintem ez nem fog kelleni {% endcomment %}
+                {% comment %} <a href="profilePageFile.html">
                     <i class="fa fa-file"></i>
-                </a>
+                </a> {% endcomment %}
             </nav>
         </div>
 {% block content %}

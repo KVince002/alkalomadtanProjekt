@@ -101,6 +101,50 @@ def Profil_UjMunka(request):
         }
     return HttpResponse(template.render(context,request))
 
+def Profil_Jelentkezesek(request):
+    userId = request.user.id
+    userUsername = request.user.username
+    felhasznalo = request.user
+    print(f"Profil_UjMunka(request) - {userUsername} ({userId})")
+    #jelentkezések keresése
+    jelentkezesek = []
+    try:
+        jelentkezesek = list(Jelentkezes.objects.filter(munkaVallalo = userId).values())
+        print("jelentkezesek száma: ", len(jelentkezesek))
+        print("jelentkezesek típusa: ", type(jelentkezesek))
+        print(jelentkezesek)
+    except:
+        print(traceback.format_exc())
+        jelentkezesek = None
+    
+    #munkák
+    munkak = []
+    try:
+        munkak = list(Munka.objects.all().values())
+    except:
+        print(traceback.format_exc())
+    
+    # munkák és jelentkezés
+    eredmeny = []
+    try:
+        for i in jelentkezesek:
+            eredmeny.append(list(Munka.objects.filter(id = i["munka_id"]).values()))
+            print("Eredmény típusa: \t", type(eredmeny))
+            print("Eredmény\n",eredmeny)
+    except:
+        print(traceback.print_exc())
+    
+    # visszaad
+    template = loader.get_template("app/auth/profilePageApplied.html")
+    context = {
+        "cim": "Profilod",
+        "felhasznalo":felhasznalo,
+        "jelentkezesek": jelentkezesek,
+        "munkak": munkak,
+        "eredmeny":eredmeny
+        }
+    return HttpResponse(template.render(context,request))    
+
 # tesztek
 # regisztrálás próbája
 def tesztRegisztral(request):

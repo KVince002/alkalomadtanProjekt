@@ -31,7 +31,7 @@ urlpatterns = [
     path("blog/", views.Blog, name="Blog"),
     path("profil/", views.Profil, name="Profil"),
     path("profil/ujmunka/", views.Profil_UjMunka, name="ProfilUjMunka"),
-    #path("profil/jelentkezesek/"),
+    path("profil/jelentkezesek/", views.Profil_Jelentkezesek, name="ProfilJelentkezesek"),
 
     # auth oldalak
     path("bejelentkezes/", auth_views.LoginView.as_view(template_name="app/auth/bejelentkezes_auth.html"), name="bejelentkezes_auth"),

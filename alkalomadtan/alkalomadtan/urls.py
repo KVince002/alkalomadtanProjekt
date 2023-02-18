@@ -29,7 +29,7 @@ urlpatterns = [
     path("rolunk/", views.Rolunk, name="Rolunk"),
     path("munkak/", views.Allasok, name="Munak"),
     # ez az utvonal kifejezetten egy munkaára utal
-    path("munkak/<int:munka_Id>", views.munkaMegtekinto, name="munka{munka_Id}"),
+    path("munkak/<int:munka_Id>", views.MunkaMegtekinto, name="munka{munka_Id}"),
     # ez az az útvonal ami tud majd jelentkezni a munkára
     #path("munkak/<int:munka_Id>/jelentkez/"),
     path("blog/", views.Blog, name="Blog"),

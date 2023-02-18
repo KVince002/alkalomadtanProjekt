@@ -146,7 +146,7 @@ def Profil_Jelentkezesek(request):
         }
     return HttpResponse(template.render(context,request))    
 
-def munkaMegtekinto(request, munka_Id):
+def MunkaMegtekinto(request, munka_Id):
     # munka megkeresése az id alapján
     eredmeny = ""
     try:
@@ -168,6 +168,21 @@ def munkaMegtekinto(request, munka_Id):
         "munka": eredmeny
         }
     return HttpResponse(template.render(context,request))    
+
+def MunkaJelentkezo(request, munka_Id):
+    # jelentkezés létrehozása
+    jelentkezesPREP = Jelentkezes.objects.create()
+    jelentkezesPREP.munkaVallalo = request.user.id
+    jelentkezesPREP.munka = munka_Id
+    jelentkezesPREP.ido = django.utils.timezone.now()
+    
+    
+    # visszaad
+    template = loader.get_template("app/teszt/munkamegjl.html")
+    context = {
+        "cim": "Profilod",
+        }
+    return HttpResponse(template.render(context,request))
 
 # tesztek
 # regisztrálás próbája

@@ -4,6 +4,7 @@ from django.http import HttpRequest, HttpResponse
 from app.forms import *
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned, MiddlewareNotUsed, SuspiciousOperation
 from app.models import *
 import os
 import sys
@@ -142,6 +143,29 @@ def Profil_Jelentkezesek(request):
         "jelentkezesek": jelentkezesek,
         "munkak": munkak,
         "eredmeny":eredmeny
+        }
+    return HttpResponse(template.render(context,request))    
+
+def munkaMegtekinto(request, munka_Id):
+    # munka megkeresése az id alapján
+    eredmeny = ""
+    try:
+        eredmeny = Munka.objects.get(id=munka_Id)
+    except ObjectDoesNotExist:
+        print("Nem található ilyen munka")
+        eredmeny = "Nem volt ilyen munka"
+    except MultipleObjectsReturned:
+        print("Több munka van ezen az Id-n")
+        eredmeny = "Több munka van ezen az id-n"
+    print(eredmeny)
+    print(type(eredmeny))
+    print(eredmeny.helye)
+
+    # visszaad
+    template = loader.get_template("app/teszt/munkamegjl.html")
+    context = {
+        "cim": "Profilod",
+        "munka": eredmeny
         }
     return HttpResponse(template.render(context,request))    
 

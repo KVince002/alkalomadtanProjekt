@@ -28,6 +28,7 @@ urlpatterns = [
     path("", views.Homepage, name="Kezdőlap"),
     path("rolunk/", views.Rolunk, name="Rolunk"),
     path("munkak/", views.Allasok, name="Munak"),
+    path("munkak/<int:munka_Id>", views.munkaMegtekinto, name="munka{munka_Id}"),
     path("blog/", views.Blog, name="Blog"),
     path("profil/", views.Profil, name="Profil"),
     path("profil/ujmunka/", views.Profil_UjMunka, name="ProfilUjMunka"),

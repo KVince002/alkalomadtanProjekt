@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Főbb oldalak
-    path("", views.Homepage, name="Kezdőlap"),
+    path("", views.Homepage, name="Kezdolap"),
     path("rolunk/", views.Rolunk, name="Rolunk"),
     path("munkak/", views.Allasok, name="Munkak"),
     # ez az utvonal kifejezetten egy munkaára utal

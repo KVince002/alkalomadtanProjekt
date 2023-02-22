@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alkalomadtán</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <section class="sub-header">
+        <nav>  
+            <a href="index.html"><img src="images/logo.png" alt="logo" title="logo"></a>
+            <div class="nav-links white" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">RÓLUNK</a></li>
+                    <li><a href="jobs.html">ÁLLÁSOK</a></li>
+                    <li><a href="contact.html">ELÉRHETŐSÉG</a></li>
+                    <li><a href="profilePage.html">PROFILOM<i class="fa-user fa-color"></i></a></li><!----Itt még a icon nem jeleníti meg, illetve
+                                                                                                    a linket beállítottam a saját módszerem alapján----> 
+                </ul>
+            </div>
+            <i class="fa fa-bars"  onclick="showMenu()"></i>
+        </nav>
+        <h1>Állások</h1>
+    </section>
+
+<!----Jelentkezés---->         
+
+<section class="jobs">
+    <h1>Jelentkezés</h1>
+        <div class="jobs-col job-apply"><!----Ez egy darab hirdetés "doboz"----> 
+            <h3>SZIGET fesztivál</h3> 
+            <div class="row"><!--ez fogja nekem elrendezni egy sorba a hirdetőről az infókat, a leírást bért, és a jelentkezés dobozt ez a row div-->
+                <div class="description"><!---ez egy ilyen "fehér" buboréknak felel meg-->
+                    <h4>Hírdető neve:</h4><!--infó rész-->
+                    <span>
+                        Kiss Pista
+                    </span>
+                    <br><br><br><br><!---sortöréssel oldottam meg az elválasztásokat-->
+                    <h4>Hírdető cég neve(ha van):</h4>
+                    <span>
+                        RendezvenyekInformation.kft
+                    </span>
+                    <br><br><br><br>
+                    <h4>Munka helyszíne:</h4>
+                    <span>
+                        Budapest, 1033
+                    </span>
+                    <br><br><br><br>
+                    <h4>Munka időpontja:</h4>
+                    <span>
+                        2022.06.20-25
+                    </span>
+                </div>
+                <div class="description">
+                    <h4>Leírás:</h4>
+                    <span>
+                        Igen! Valóban a SZIGET fesztiválra keresünk információ pulthoz embereket!
+                        Amit mi elvárunk tőled: tudj angolul beszélni, érts a számítógép kezeléshez felhasználói szinten,
+                        segíteni akarás, napi 14 óra munka.
+                        Amit mi adunk: 2500 Ft/óra
+                        Ha igazak rád a fent említettek, akkor várjuk a jelentkezésed!
+                    </span>
+                    <br><br><br><br>
+                    <h4>Bér:</h4>
+                    <span>
+                        2500 Ft/óra
+                    </span>
+                </div>
+                <div class="description">
+                    <div class="contact"><!--Ez a div csak arra szolgál hogy könnyen megtudjam formázni az inputokat, de itt is description div-be rakom bele-->
+                        <form action="">
+                            <input type="text" placeholder="Teljes név..." required="Név megadása kötelező">
+                            <input type="text" placeholder="Email..." required="Email meagadása kötelező">
+                            <input type="text" placeholder="Telefonszám..." required="Telefonszám megadása kötelező">
+                            <textarea rows="8" placeholder="Kérdések..."></textarea><!----Hogy pontosan milyen adatokat kell leadni a jelentkezéshez ezen lehet változtatni természetesen, de első körbe ezek jutottak eszembe-->
+                            <button class="hero-btn black-btn place-btn">Jelentkezek</button><!----classok a színekért és az animációért kellenek----> 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</section>
+
+<!----Footer---->
+
+<section class="footer" id="footer">
+    <h4>Közösségi Platformjaink</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas officia, hic quibusdam mollitia praesentium ut, <br> aperiam aliquam obcaecati error unde labore doloribus necessitatibus quis, a eos iusto facere. Dolores, sapiente.</p>    
+    <div class="icons">
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>
+    </div>
+</section>
+
+<!----Javascript for toggle menu-->
+    <script>
+        var navLinks = document.getElementById("navLinks");
+
+        function showMenu()
+        {
+          navLinks.style.right = "0";  
+        }
+        function hideMenu()
+        {
+            navLinks.style.right = "-200px";
+        }
+    </script>
+
+</body>
+</html>

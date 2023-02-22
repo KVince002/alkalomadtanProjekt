@@ -10,6 +10,9 @@ import os
 
 # # munka
 class Munka(models.Model):
+    class Meta:
+        ordering = ["-katt"]
+    
     # munka neve
     nev = models.CharField(max_length=255, null=False)
     # munka leírása

@@ -32,9 +32,22 @@ def Rolunk(request):
 
 # állások oldal
 def Allasok(request):
-    template = loader.get_template("app/jobs.html")
+    print("Állaások főoldalja / Allasok(request)")
+    # állások keresése az adatbázisból
+    allasok =""
+
+    try:
+        # ez a Mumka modellből fog az 20 értéket vissza adni listaként
+        allasok =Munka.objects.all()[:20]
+    except:
+        allasok = "Hihetelen de nincs most aktív hirdetés!"
+
+    print(f"allasok végül: {type(allasok)}")
+
+    template = loader.get_template("app/logedJobs.html")
     context = {
-        "cim": "Állások"
+        "cim": "Állások",
+        "allasok": allasok
         }
     return HttpResponse(template.render(context,request))
 

@@ -38,8 +38,9 @@
                 <div class="jobs-col">
                     <h3>{{allas.nev}}</h3>
                     <p>{{allas.leiras}}</p>
-                    <button class="hero-btn black-btn place-btn">Érdekel</button>
-                    <a class="hero-btn black-btn place-btn" href="{% url {{allas.id}} %}">Érdekel</a>
+                    <button class="hero-btn black-btn place-btn">
+                        <a class="hero-btn black-btn place-btn" href="{% url "MunkaReszlet" allas.id %}">Érdekel</a>
+                    </button>
                 </div>
         {% endfor %}
         </div>

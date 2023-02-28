@@ -174,11 +174,24 @@ def MunkaMegtekinto(request, munka_Id):
     print(type(eredmeny))
     print(eredmeny.helye)
 
+    # jelentkezés része
+    if request.method =="POST":
+        munkaJelentkezes = JelentkezesFormModel(request.post)
+        if munkaJelentkezes.is_valid():
+            jelentkezesMento = munkaJelentkezes.save(commit=False)
+            jelentkezesMento.munka = munka_Id
+            jelentkezesMento.save()
+            redirect("Kezdolap")
+    else:
+        munkaJelentkezes = JelentkezesFormModel()
+
+
     # visszaad
     template = loader.get_template("app/jobApply.html")
     context = {
         "cim": "Profilod",
-        "munka": eredmeny
+        "munka": eredmeny,
+        "form": munkaJelentkezes
         }
     return HttpResponse(template.render(context,request))    
 

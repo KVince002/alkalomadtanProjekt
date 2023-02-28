@@ -66,7 +66,7 @@ class JelentkezesFormModel(ModelForm):
     class Meta:
         model = Jelentkezes
         fields = "__all__"
-        exclude =["munkaVallalo","ido", "felhId"]
+        exclude =["munkaVallalo","ido", "felhId", "munka"]
     
     berigeny = forms.IntegerField(label="Bérigényed")
     bemutatkozas = forms.Textarea()

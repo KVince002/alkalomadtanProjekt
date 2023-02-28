@@ -65,12 +65,9 @@
                 </div>
                 <div class="description">
                     <div class="contact"><!--Ez a div csak arra szolgál hogy könnyen megtudjam formázni az inputokat, de itt is description div-be rakom bele-->
-                        <form action="">
-                            <input type="text" placeholder="Teljes név..." required="Név megadása kötelező">
-                            <input type="text" placeholder="Email..." required="Email meagadása kötelező">
-                            <input type="text" placeholder="Telefonszám..." required="Telefonszám megadása kötelező">
-                            <textarea rows="8" placeholder="Kérdések..."></textarea><!----Hogy pontosan milyen adatokat kell leadni a jelentkezéshez ezen lehet változtatni természetesen, de első körbe ezek jutottak eszembe-->
-                            <button class="hero-btn black-btn place-btn">Jelentkezek</button><!----classok a színekért és az animációért kellenek----> 
+                        <form>
+                        {{form}}
+                        <input type="submit" value="Elküld"/>
                         </form>
                     </div>
                 </div>

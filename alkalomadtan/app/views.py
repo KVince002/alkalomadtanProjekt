@@ -175,7 +175,7 @@ def MunkaMegtekinto(request, munka_Id):
     print(eredmeny.helye)
 
     # visszaad
-    template = loader.get_template("app/teszt/munkamegjl.html")
+    template = loader.get_template("app/jobApply.html")
     context = {
         "cim": "Profilod",
         "munka": eredmeny

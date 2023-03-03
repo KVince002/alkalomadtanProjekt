@@ -11,8 +11,7 @@
                     <li><a href="{% url 'Kezdolap' %}">HOME</a></li>
                     <li><a href="{% url 'Rolunk' %}">RÓLUNK</a></li>
                     <li><a href="{% url 'Munkak' %}">ÁLLÁSOK</a></li>
-                    <li><a href="{% url 'Profil' %}">PROFILOM<i class="fa-user fa-color"></i></a></li><!----Itt még a icon nem jeleníti meg, illetve
-                                                                                                    a linket beállítottam a saját módszerem alapján----> 
+                    <li><a href="{% url 'Profil' %}">PROFILOM<i class="fa-user fa-color"></li></a></li><!----Itt még a icon nem jeleníti meg, illetve a linket beállítottam a saját módszerem alapján----> 
                 </ul>
             </div>
             <i class="fa fa-bars"  onclick="showMenu()"></i>
@@ -25,7 +24,7 @@
 <section class="jobs">
     <h1>Jelentkezés</h1>
         <div class="jobs-col job-apply"><!----Ez egy darab hirdetés "doboz"----> 
-            <h3>SZIGET fesztivál</h3> 
+            <h3>{{munka.nev}}</h3> 
             <div class="row"><!--ez fogja nekem elrendezni egy sorba a hirdetőről az infókat, a leírást bért, és a jelentkezés dobozt ez a row div-->
                 <div class="description"><!---ez egy ilyen "fehér" buboréknak felel meg-->
                     <h4>Hírdető neve:</h4><!--infó rész-->

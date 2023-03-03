@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -5,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alkalomadtán</title>
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="{% static 'style2.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
@@ -13,31 +15,38 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
- 
 
 <body>
     <section class="header">
-        <nav> <a href="index.html"><img src="images/logo.png" alt="logo" title="logo"></a></nav>
+        <nav> <a href="index.html"><img src="{% static 'logo.png' %}" alt="logo" title="logo"></a></nav>
         <div class="login-box">
             <div class="form">
                 <h2>Bejelentkezés</h2>
-                <div class="input-box">
-                    <input type="email" required="Kötelező mező">
-                    <span>Email cím</span>
-                    <i></i>
-                </div>
-                <div class="input-box">
-                    <input type="password" required="Kötelező mező">
-                    <span>Jelszó</span>
-                    <i></i>
-                </div>
-                <div class="links">
-                    <a href="">Elfelejtett jelszó?</a>
-                    <a href="">Regisztrálok</a>
-                </div>
-                <div>
-                    <input type="submit" value="Bejelentkezek" class="hero-btn">
-                </div>
+                {% if user.is_authenticated %}
+                    <p>Már be vagy jelentkezve! Nem kell erre az oldalra lépned!</p>
+                {% else %}
+                <form method="post" class="form">
+                    {% csrf_token %}
+                    <div class="input-box">
+                        {{ form.username.label_tag }}
+                        {{ form.username }}
+                        <i></i>
+                    </div>
+                    <div class="input-box">
+                        {{ form.password.label_tag }}
+                        {{ form.password }}
+                        <i></i>
+                    </div>
+                    <div class="links">
+                        <a href="">Elfelejtett jelszó?</a>
+                        <a href="">Regisztrálok</a>
+                    </div>
+                    <div>
+                        <input type="submit" value="Bejelentkezek" class="hero-btn">
+                    </div>
+                </form>
+                <p><a href="{% url 'jelszoHelyre_auth' %}">Elfelejtett jelszó?</a></p>
+                {% endif %}
             </div>
         </div>
     </section>

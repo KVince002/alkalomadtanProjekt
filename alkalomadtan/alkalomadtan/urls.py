@@ -38,7 +38,8 @@ urlpatterns = [
     path("profil/jelentkezesek/", views.Profil_Jelentkezesek, name="ProfilJelentkezesek"),
 
     # auth oldalak
-    path("bejelentkezes/", auth_views.LoginView.as_view(template_name="app/auth/bejelentkezes_auth.html"), name="bejelentkezes_auth"),
+    # Ezek a Django-ba beleépített oldalak "sablonok", ezek felül lehet írni, de csak óvatosan!
+    path("bejelentkezes/", auth_views.LoginView.as_view(template_name="app/auth/login_auth.html"), name="bejelentkezes_auth"),
     path("jelszohelyre/", auth_views.PasswordResetView.as_view(template_name="app/auth/jelszoHelyre_auth.html"), name="jelszoHelyre_auth"),
     path("jelszovalt/", auth_views.PasswordChangeView.as_view(template_name="app/auth/jelszoValt_auth.html"), name="jelszoValt_auth"),
 

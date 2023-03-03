@@ -65,10 +65,35 @@
                 </div>
                 <div class="description">
                     <div class="contact"><!--Ez a div csak arra szolgál hogy könnyen megtudjam formázni az inputokat, de itt is description div-be rakom bele-->
-                        <form>
-                        {{form}}
-                        <input type="submit" value="Elküld"/>
+                        <!-- Form hibák -->
+                        {% if user.is_authenticated %}
+                        {% if form.errors %}
+                        <ul class="errors">
+                            {% for error in form.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+
+                        {% comment %} form generálás {% endcomment %}
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            <div>
+                                <label>{{field.label}}</label>
+                                <br>
+                                {{field}}
+                            </div>
+                            {% endfor %}
+                            <input type="submit" value="Elküld"/>
                         </form>
+                        {% else %}
+                            <div>
+                                <p>Ha nem vagy bejelentkezve akkor elég nehéz lesz jelezni! Gyorsan regisztrálj vagy lépja be a profilodba!</p>
+                                <a class="hero-btn black-btn place-btn" href="{% url 'tesztRegisztral' %}">Regisztráció</a>
+                                <a class="hero-btn black-btn place-btn" href="{% url 'bejelentkezes_auth' %}">Belépés</a>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

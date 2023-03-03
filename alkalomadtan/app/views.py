@@ -161,6 +161,7 @@ def Profil_Jelentkezesek(request):
 
 def MunkaMegtekinto(request, munka_Id):
     # munka megkeresése az id alapján
+    print(f"MunkaMegtekinto(request, {munka_Id}) / Részletes munka megtekintő")
     eredmeny = ""
     try:
         eredmeny = Munka.objects.get(id=munka_Id)
@@ -175,12 +176,16 @@ def MunkaMegtekinto(request, munka_Id):
     print(eredmeny.helye)
 
     # jelentkezés része
-    if request.method =="POST":
-        munkaJelentkezes = JelentkezesFormModel(request.post)
+    if request.POST:
+        munkaJelentkezes = JelentkezesFormModel(request.POST, request.FILES)
         if munkaJelentkezes.is_valid():
             jelentkezesMento = munkaJelentkezes.save(commit=False)
-            jelentkezesMento.munka = munka_Id
+            jelentkezesMento.munkaVallalo = User.objects.get(id=request.user.id)
+            jelentkezesMento.ido = django.utils.timezone.now()
+            jelentkezesMento.felhID = str(request.user.id)
+            jelentkezesMento.munka = Munka.objects.get(id=munka_Id)
             jelentkezesMento.save()
+            print(jelentkezesMento)
             redirect("Kezdolap")
     else:
         munkaJelentkezes = JelentkezesFormModel()

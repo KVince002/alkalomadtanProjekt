@@ -215,6 +215,26 @@ def MunkaJelentkezo(request, munka_Id):
         }
     return HttpResponse(template.render(context,request))
 
+def Bejelentkezes(request):
+    # kézzel megírt bejelentkező függvény
+    # ötlet innen: https://docs.djangoproject.com/en/4.2/topics/auth/default/#how-to-log-a-user-in
+    felhasznalo = request.POST["username"]
+    jelszo = request.POST["password"]
+    user = authenticate(request, username=felhasznalo, password=jelszo)
+    if user is not None:
+        login(request, user)
+        redirect("Profil")
+    else:
+        # Return an 'invalid login' error message.
+        print("Sikertelen bejelentkezés")
+    
+    # visszaad
+    template = loader.get_template("app/teszt/login_auth.html")
+    context = {
+        "cim": "Bejelentkezés",
+        }
+    return HttpResponse(template.render(context,request))
+
 # tesztek
 # regisztrálás próbája
 def tesztRegisztral(request):

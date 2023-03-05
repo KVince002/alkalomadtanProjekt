@@ -37,15 +37,13 @@ urlpatterns = [
     path("profil/", views.Profil, name="Profil"),
     path("profil/ujmunka/", views.Profil_UjMunka, name="ProfilUjMunka"),
     path("profil/jelentkezesek/", views.Profil_Jelentkezesek, name="ProfilJelentkezesek"),
-    # bejelentkezés kézzel
-    #path("bejelentkez/", views.Bejelentkezes, name="Bejelentkezes"),
+        # a django kijelentkező link
+    path("kijelentkezes/", views.KijelentkezKerelem, name="KijelentkezKerelem"),
 
     # django auth oldalak
     # Ezek a Django-ba beleépített oldalak "sablonok", ezek felül lehet írni, de csak óvatosan!
     # ez a django bejelentkezés kezelője
     path("bejelentkezes/", auth_views.LoginView.as_view(template_name="app/auth/login_auth.html", redirect_authenticated_user=True), name="bejelentkezes_auth"),
-    # ez a django jelszóhelyre állítója
-    # path("bejlIrany/", auth_views.LoginView),
     path("jelszohelyre/", auth_views.PasswordResetView.as_view(template_name="app/auth/jelszoHelyre_auth.html"), name="jelszoHelyre_auth"),
     # ez a django jelszó változtatója
     path("jelszovalt/", auth_views.PasswordChangeView.as_view(template_name="app/auth/jelszoValt_auth.html"), name="jelszoValt_auth"),

@@ -218,7 +218,7 @@ def MunkaJelentkezo(request, munka_Id):
 # kijelentkezés kérelmező
 def KijelentkezKerelem(request):
     print(f"KijelenetkezesKerelem(request) / Kijelentkezés kérelem")
-    print(f"{request.user.id}-idval rendelkező ({request.usser.username}) kijelentkezik")
+    print(f"{request.user.id}-idval rendelkező ({request.user.username}) kijelentkezik")
     logout(request)
     return redirect("Kezdolap") 
 

@@ -200,20 +200,21 @@ def MunkaMegtekinto(request, munka_Id):
         }
     return HttpResponse(template.render(context,request))    
 
-def MunkaJelentkezo(request, munka_Id):
-    # jelentkezés létrehozása
-    jelentkezesPREP = Jelentkezes.objects.create()
-    jelentkezesPREP.munkaVallalo = request.user.id
-    jelentkezesPREP.munka = munka_Id
-    jelentkezesPREP.ido = django.utils.timezone.now()
+# Ez a függvény el lett távolítva, mert ez már meg lett valósítva. Lásd: MunkaMegtekinto(request, munka_id) függvény
+# def MunkaJelentkezo(request, munka_Id):
+#     # jelentkezés létrehozása
+#     jelentkezesPREP = Jelentkezes.objects.create()
+#     jelentkezesPREP.munkaVallalo = request.user.id
+#     jelentkezesPREP.munka = munka_Id
+#     jelentkezesPREP.ido = django.utils.timezone.now()
     
     
-    # visszaad
-    template = loader.get_template("app/teszt/munkamegjl.html")
-    context = {
-        "cim": "Profilod",
-        }
-    return HttpResponse(template.render(context,request))
+#     # visszaad
+#     template = loader.get_template("app/teszt/munkamegjl.html")
+#     context = {
+#         "cim": "Profilod",
+#         }
+#     return HttpResponse(template.render(context,request))
 
 # kijelentkezés kérelmező
 def KijelentkezKerelem(request):

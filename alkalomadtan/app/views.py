@@ -200,22 +200,6 @@ def MunkaMegtekinto(request, munka_Id):
         }
     return HttpResponse(template.render(context,request))    
 
-# Ez a függvény el lett távolítva, mert ez már meg lett valósítva. Lásd: MunkaMegtekinto(request, munka_id) függvény
-# def MunkaJelentkezo(request, munka_Id):
-#     # jelentkezés létrehozása
-#     jelentkezesPREP = Jelentkezes.objects.create()
-#     jelentkezesPREP.munkaVallalo = request.user.id
-#     jelentkezesPREP.munka = munka_Id
-#     jelentkezesPREP.ido = django.utils.timezone.now()
-    
-    
-#     # visszaad
-#     template = loader.get_template("app/teszt/munkamegjl.html")
-#     context = {
-#         "cim": "Profilod",
-#         }
-#     return HttpResponse(template.render(context,request))
-
 # kijelentkezés kérelmező
 def KijelentkezKerelem(request):
     print(f"KijelenetkezesKerelem(request) / Kijelentkezés kérelem")
@@ -237,7 +221,7 @@ def tesztRegisztral(request):
             tRL_Ment =  tesztRegisztraciosLap.Mentes()
             #frissen regisztrál felhasználó regisztrálása
             login(request, tRL_Ment)
-            return redirect("Kezdőlap")
+            return redirect("Profil")
     else:
         tesztRegisztraciosLap = Regisztralas()
     

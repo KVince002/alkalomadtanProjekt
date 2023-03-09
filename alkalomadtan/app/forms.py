@@ -78,7 +78,7 @@ class JelentkezesFormModel(ModelForm):
         print(fajl)
         if commit:
             instance.save()
-        return instance    
+        return instance
 
 # nagyon bugyuta form
 class BejelentkezesForm(forms.Form):

@@ -37,9 +37,9 @@ class Munka(models.Model):
         return f"Munka neve: {self.nev}, publikáló: {self.publikalo}, hely: {self.helye}"
 
 # jelentkezés modell
-def fajlNevGeneralo(self, fajlnev):
-    url = "feltoltottDokumentumok/felh_%s/%s" % (self.felhId, fajlnev)
-    return url
+# def fajlNevGeneralo(self, fajlnev):
+#     url = "feltoltottDokumentumok/felh_%s/%s" % (self.felhId, fajlnev)
+#     return url
 # rekreálás a megbeszéltek alapján
 class Jelentkezes(models.Model):
     # mukavállaló
@@ -52,9 +52,9 @@ class Jelentkezes(models.Model):
     berigeny = models.IntegerField(null=True, default=0)
     # bemutatkozás
     bemutatkozas = models.TextField(null=True, default="A jelentkező nem írt leírást.")
-    # önéletrajz 
+    # önéletrajz mentése
     felhId = models.CharField(max_length=10, null=False, default="")
-    melleklet = models.FileField(null = False, upload_to=fajlNevGeneralo)
+    melleklet = models.FileField(null = False, upload_to=f"feltoltottDokumentumok/")
 
     def __str__(self):
         return f"{self.munka} - {self.ido}-kor jelentkezett: {self.munkaVallalo}"

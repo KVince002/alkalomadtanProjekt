@@ -68,7 +68,7 @@ def Profil(request):
     print(f"Profil(request) - {userUsername}, ({userId})")
 
 
-    template = loader.get_template("app/auth/profilePage.html")
+    template = loader.get_template("app/profile/profilePage.html")
     context = {
         "cim": "Profilod",
         "felhasznalo":felhasznalo
@@ -97,7 +97,7 @@ def Profil_UjMunka(request):
                 print(ujMunkaForm.errors)         
     else:
         ujMunkaForm = MunkaFrom()
-    template = loader.get_template("app/auth/profilePageAd.html")
+    template = loader.get_template("app/profile/profilePageAd.html")
 
     # munkák visszadása
     munkak = ""
@@ -149,7 +149,7 @@ def Profil_Jelentkezesek(request):
         print(traceback.print_exc())
     
     # visszaad
-    template = loader.get_template("app/auth/profilePageApplied.html")
+    template = loader.get_template("app/profile/profilePageApplied.html")
     context = {
         "cim": "Profilod",
         "felhasznalo":felhasznalo,

@@ -1,72 +1,36 @@
+{% comment %} ez lesz a login és regiszttrációhoz {% endcomment %}
 <!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{cim}}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'style3.css' %}">
+    <link rel="stylesheet" href="{% static 'style2.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <title>{{ cim }}</title>
 </head>
-<section class="header">
-    <nav class="logo">
-        <a href="index.html"><img src="images/logo.png" alt=""></a>
-    </nav>
-    <div class="container">
-        <div id="asd">
-            <h1 class="asd">asd</h1>
-            <div class="CTA">
-                <h1>ÓRÁNKÉNT 3000Ft</h1>
-            </div>
-        </div>
-        <div class="leftbox links">
-            <nav>
-                <a href="{% url 'Profil' %}">
-                    <i class="fa fa-user active"></i>
-                </a>
-                <a href="{% url 'ProfilJelentkezesek' %}">
-                    <i class="fa fa-briefcase"></i>
-                </a>
-                <a href="{% url 'ProfilUjMunka' %}">
-                    <i class="fa fa-plus-circle"></i>
-                </a>
-                {% comment %} szerintem ez nem fog kelleni {% endcomment %}
-                {% comment %} <a href="profilePageFile.html">
-                    <i class="fa fa-file"></i>
-                </a> {% endcomment %}
-                <a href="{% url 'KijelentkezKerelem' %}">
-                    <i class="fa fa-sign-out"></i>
-                </a>
-            </nav>
-        </div>
+
 {% block content %}
-{% endblock %}
-{% load static %}
-<body>
-    
-    <!-- Script fájlok-->
-    <script src="{% static 'script.js' %}"></script>
-    <script src="{% static 'bootstrap.min.js' %}"></script>
+{% endblock content %}
 
-    <!-- Script az oldalon-->
-    <script>
-        var navLinks = document.getElementById("navLinks");
+<script>
+    //ne mosódjon össze a gépelés, és az animáció a text boxba script
+    function myFunction()
+    {
+        filled = document.getElementsByTagName("input");
 
-        function showMenu()
+        if (filled == "")
         {
-          navLinks.style.right = "0";  
+            filled.style.transform = "-34px";
         }
-        function hideMenu()
-        {
-            navLinks.style.right = "-200px";
-        }
-    </script>
+    }
+
+</script>
 </body>
 </html>

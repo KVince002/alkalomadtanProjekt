@@ -1,0 +1,64 @@
+{% extends 'app/layout/commonhead2.html' %}
+{% block content %}
+{% load static %}
+
+<body>
+    <section class="header">
+        <nav> <a href="index.html"><img src="images/logo.png" alt="logo" title="logo"></a></nav>
+        <div class="register-box"><!----Ez a div felel az animációért, és helyezkedésért-->
+            <div class="form"><!--ez ugye kitakarja az animáció felesleges részét ami szakmaibb dolog--->
+                <form action="">
+                <h2>Regisztráció</h2>
+                <div class="input-box"><!--Ez alapjártaon megint csak egy animáció miatt lett létrehozva-->
+                    <input type="text" required="Kötelező mező" onchange="myFunction()"><!--Ezt a functiont megbeszéltük múltkor de a lényege hogy ha egy textboxba írok akkor ne mosódjon össze az animáció-->
+                    <span>Vezetéknév</span> 
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    <input type="text" required="Kötelező mező" onchange="myFunction()">
+                    <span>Utónév</span>
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    <input type="text" required="Kötelező mező" onchange="myFunction()">
+                    <span>Felhasználó név</span>
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    <input type="email" required="Kötelező mező" onchange="myFunction()">
+                    <span>Email</span>
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" required="Kötelező mező" id="jelszo1">
+                    <span>Jelszó</span>
+                    <i></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" required="Kötelező mező" id="jelszo2">
+                    <span>Jelszó újra</span>
+                    <i></i>
+                </div>
+            </form>
+                <div class="links">
+                    <a href="login.html">Már van fiókom</a><!--Ugye a link ami visszadob a bejelentkezés részhez-->
+                </div>
+                <div>
+                    <input type="submit" value="Regisztrálok" class="hero-btn">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="footer" id="footer">
+        <h4>Közösségi Platformjaink</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas officia, hic quibusdam mollitia praesentium ut, <br> aperiam aliquam obcaecati error unde labore doloribus necessitatibus quis, a eos iusto facere. Dolores, sapiente.</p>    
+        <div class="icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+    </section>
+
+{% endblock %}

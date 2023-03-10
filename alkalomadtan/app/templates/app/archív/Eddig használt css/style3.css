@@ -1,20 +1,20 @@
-body
-{
+/* még nem jöttem rá*/
+body {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
-.header
-{
+
+.header {
     min-height: 100vh;
     width: 100%;
-    background-image: url(images/banner.jpg);  
+    background-image: url(images/banner.jpg);
     background-position: center;
     background-size: cover;
-    position: relative; 
+    position: relative;
 }
-.container  
-{
+
+.container {
     background-color: #fff;
     width: 1000px;
     height: 770px;
@@ -23,8 +23,8 @@ body
     border-top: 10px;
     box-shadow: 2px 5px 20px rgba(119, 119, 119, 0.5);
 }
-.asd  
-{
+
+.asd {
     float: right;
     margin-right: 12px;
     margin-top: 12px;
@@ -34,8 +34,8 @@ body
     font-size: 1.5rem;
     letter-spacing: 1px;
 }
-.CTA 
-{
+
+.CTA {
     width: 100px;
     height: 60px;
     right: -20px;
@@ -49,21 +49,21 @@ body
     transition: all 0.5s ease-in-out;
     cursor: pointer;
 }
-.CTA h1
-{
+
+.CTA h1 {
     color: #fff;
     margin-top: 10px;
     margin-left: 9px;
 }
-.CTA:hover
-{
+
+.CTA:hover {
     background: #3fb6a8;
     transform: scale(1.1);
 }
-.leftbox
-{
+
+.leftbox {
     float: left;
-    top:-5%;
+    top: -5%;
     left: 5%;
     position: absolute;
     width: 9%;
@@ -71,8 +71,8 @@ body
     background: #f44336;
     box-shadow: 3px 3px 10px rgba(119, 119, 119, 0.5);
 }
-.links a
-{
+
+.links a {
     list-style: none;
     padding: 35px;
     color: #fff;
@@ -80,41 +80,41 @@ body
     display: block;
     transition: all 0.3s ease-in-out;
 }
-.links a:hover
-{
+
+.links a:hover {
     color: #3fb6a8;
     transform: scale(1.5);
     cursor: pointer;
 }
-.links a:first-child
-{
+
+.links a:first-child {
     margin-top: 7px;
 }
-.active
-{
+
+.active {
     color: #3fb6a8;
 }
-.rightbox
-{
+
+.rightbox {
     float: right;
     width: 60%;
     height: 100%;
 }
-.profile
-{
+
+.profile {
     position: absolute;
     width: 70%;
 }
-h1
-{
+
+h1 {
     font-family: 'Poppins', sans-serif;
     color: #f44336;
     font-size: 2em;
     margin-top: 40px;
     margin-bottom: 35px;
 }
-h2
-{
+
+h2 {
     color: #777;
     font-family: 'Poppins', sans-serif;
     width: 80%;
@@ -123,11 +123,11 @@ h2
     letter-spacing: 1px;
     margin-left: 2px;
 }
-.header p   
-{
+
+.header p {
     border-width: 3px;
     border-style: solid;
-    border-image: linear-gradient(to right, #3fb6a8,rgb(252, 74, 26), rgb(247, 183, 51)) 1 0%;
+    border-image: linear-gradient(to right, #3fb6a8, rgb(252, 74, 26), rgb(247, 183, 51)) 1 0%;
     border-top: 0;
     width: 500px;
     font-family: 'Poppins', sans-serif;
@@ -135,8 +135,8 @@ h2
     padding: 7px 0;
     color: #070707;
 }
-.btn    
-{
+
+.btn {
     float: right;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
@@ -144,8 +144,8 @@ h2
     border: none;
     color: #f44336;
 }
-input
-{
+
+input {
     float: right;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
@@ -153,75 +153,51 @@ input
     border: none;
     color: #f44336;
 }
-.btn:hover
-{
+
+.btn:hover {
     text-decoration: underline;
     font-weight: 900;
 }
+
 /*-----logo----*/
-.logo img
-{
+.logo img {
     width: 150px;
 }
-.logo
-{
+
+.logo {
     display: flex;
     padding: 2% 6%;
     justify-content: space-between;
     align-items: center;
 }
+
 /*-----footer----*/
 
-.footer
-{
+.footer {
     width: 100%;
     text-align: center;
     padding: 30px 0;
 }
-.footer h4
-{
+
+.footer h4 {
     margin-bottom: 25px;
     margin-top: 20px;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
 }
-.icons .fa
-{
+
+.icons .fa {
     color: #f44336;
-    margin:  0 13px;
+    margin: 0 13px;
     cursor: pointer;
     padding: 18px 0;
 }
-.footer p
-{
+
+.footer p {
     color: #777;
     font-size: 14px;
     font-weight: 300;
     line-height: 22px;
     padding: 10px;
     font-family: 'Poppins', sans-serif;
-}
-h3
-{
-    color: #f55f39;
-    font-family: 'Poppins', sans-serif;
-    width: 80%;
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 1px;
-    margin-left: 2px;
-}
-
-.hirdetgomb .fa
-{
-    margin: 20px;
-    color: #f44336;
-    cursor: pointer;
-    font-size: 2em;
-    transition: all 0.3s ease-in-out;
-}
-.hirdetgomb .fa:hover
-{
-    color: #3fb6a8;
-    transform: scale(1.5);
 }

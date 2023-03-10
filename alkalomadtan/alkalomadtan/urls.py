@@ -35,8 +35,10 @@ urlpatterns = [
     path("profil/", views.Profil, name="Profil"),
     path("profil/ujmunka/", views.Profil_UjMunka, name="ProfilUjMunka"),
     path("profil/jelentkezesek/", views.Profil_Jelentkezesek, name="ProfilJelentkezesek"),
-    # a django kijelentkező link
+    # a kijelentkező link
     path("kijelentkezes/", views.KijelentkezKerelem, name="KijelentkezKerelem"),
+    # az új regizstráló oldal
+    path("regisztral/", views.Regisztral, name="Regisztral"), # type: ignore
 
     # django auth oldalak
     # Ezek a Django-ba beleépített oldalak "sablonok", ezek felül lehet írni, de csak óvatosan!

@@ -212,16 +212,21 @@ def KijelentkezKerelem(request):
     return redirect("Kezdolap")
 
 # regisztráció 💤
-# def Regisztral(request):
-#     print("Regisztral(request) / Regisztrálás")
-#     regisztralasForm = Regisztralas(request.POST)
-#     if regisztralasForm.is_valid():
-#         regisztracio = regisztralasForm.Mentes()
-#         login(request, regisztracio)
-#         return redirect("Profil")
+def Regisztral(request):
+    print("Regisztral(request) / Regisztrálás")
+    regisztralasForm = Regisztralas(request.POST)
+    if regisztralasForm.is_valid():
+        regisztracio = regisztralasForm.Mentes()
+        login(request, regisztracio)
+        return redirect("Profil")
     
-#     # válasz
-#     template = loader.get_template()
+    # válasz
+    template = loader.get_template("app/auth/register.html")
+    context = {
+        "cim": "Regisztráció",
+        "form": regisztralasForm
+        }
+    return HttpResponse(template.render(context, request)) # type: ignore
 
 
 # tesztek

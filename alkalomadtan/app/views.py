@@ -209,7 +209,20 @@ def KijelentkezKerelem(request):
     print(f"KijelenetkezesKerelem(request) / Kijelentkezés kérelem")
     print(f"{request.user.id}-idval rendelkező ({request.user.username}) kijelentkezik")
     logout(request)
-    return redirect("Kezdolap") 
+    return redirect("Kezdolap")
+
+# regisztráció 💤
+# def Regisztral(request):
+#     print("Regisztral(request) / Regisztrálás")
+#     regisztralasForm = Regisztralas(request.POST)
+#     if regisztralasForm.is_valid():
+#         regisztracio = regisztralasForm.Mentes()
+#         login(request, regisztracio)
+#         return redirect("Profil")
+    
+#     # válasz
+#     template = loader.get_template()
+
 
 # tesztek
 # regisztrálás próbája

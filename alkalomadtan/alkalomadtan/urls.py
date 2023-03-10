@@ -31,8 +31,6 @@ urlpatterns = [
     path("munkak/", views.Allasok, name="Munkak"),
     # ez az utvonal kifejezetten egy munkaára utal
     path("munkak/<int:munka_Id>", views.MunkaMegtekinto, name="MunkaReszlet"),
-    # ez az az útvonal ami tud majd jelentkezni a munkára
-    # path("munkak/<int:munka_Id>/jelentkez/", views.MunkaJelentkezo, name="MunkaJelenetkezo"),
     # path("blog/", views.Blog, name="Blog"),
     path("profil/", views.Profil, name="Profil"),
     path("profil/ujmunka/", views.Profil_UjMunka, name="ProfilUjMunka"),

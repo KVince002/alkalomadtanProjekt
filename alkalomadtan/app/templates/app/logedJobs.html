@@ -37,7 +37,12 @@
 
                 <div class="jobs-col">
                     <h3>{{allas.nev}}</h3>
-                    <p>{{allas.leiras}}</p>
+                    {% if allas.berMax is none %}
+                    <p>{{allas.berMin}}</p>
+                    {% else %}
+                    <p>{{allas.berMin}} --> {{allas.berMax}}</p>
+                    {% endif %}
+                    {% comment %} <p>{{allas.leiras}}</p> {% endcomment %}
                     <a class="hero-btn black-btn place-btn" href="{% url "MunkaReszlet" allas.id %}">Érdekel</a>
                 </div>
         {% endfor %}
@@ -48,7 +53,7 @@
         <div class="jobs-col"><!----Ez egy darab hirdetés "doboz"----> 
             <h3>SZIGET fesztivál</h3>
             <p>Információ pultos</p>
-           <button class="hero-btn black-btn place-btn">Érdekel</button><!----classok a színekért és az animációért kellenek----> 
+            <button class="hero-btn black-btn place-btn">Érdekel</button><!----classok a színekért és az animációért kellenek----> 
         </div>
     </div>
 </section>

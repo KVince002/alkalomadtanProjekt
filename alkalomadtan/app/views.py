@@ -162,9 +162,13 @@ def Profil_Jelentkezesek(request):
 def MunkaMegtekinto(request, munka_Id):
     # munka megkeresése az id alapján
     print(f"MunkaMegtekinto(request, {munka_Id}) / Részletes munka megtekintő")
+    # munka ellenőrzése, hogy létezik-e
     eredmeny = ""
     try:
         eredmeny = Munka.objects.get(id=munka_Id)
+        # munka megtekintésének rögzítése
+        eredmeny.katt = eredmeny.katt+1
+        eredmeny.save()
     except ObjectDoesNotExist:
         print("Nem található ilyen munka")
         eredmeny = "Nem volt ilyen munka"

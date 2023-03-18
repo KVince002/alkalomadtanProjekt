@@ -37,10 +37,6 @@ class Munka(models.Model):
         return f"Munka neve: {self.nev}, publikáló: {self.publikalo}, hely: {self.helye}"
 
 # jelentkezés modell
-# def fajlNevGeneralo(self, fajlnev):
-#     url = "feltoltottDokumentumok/felh_%s/%s" % (self.felhId, fajlnev)
-#     return url
-# rekreálás a megbeszéltek alapján
 class Jelentkezes(models.Model):
     # mukavállaló
     munkaVallalo = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

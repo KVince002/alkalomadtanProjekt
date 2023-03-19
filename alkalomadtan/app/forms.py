@@ -67,6 +67,11 @@ class JelentkezesFormModel(ModelForm):
         model = Jelentkezes
         fields = "__all__"
         exclude =["munkaVallalo","ido", "felhId", "munka"]
+        labels = {
+            "berigeny": _("Bérigénye"),
+            "bemutatkozas": _("Bemutatkozás"),
+            "melleklet":_("Melléklet")
+        }
     
     berigeny = forms.IntegerField(label="Bérigényed")
     bemutatkozas = forms.Textarea()

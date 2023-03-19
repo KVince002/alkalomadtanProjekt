@@ -208,4 +208,49 @@ nav
 nav img
 {
     width: 150px;
+}.register-box
+{
+    position:relative;
+    width: 380px;
+    height:740px;
+    background:#f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: auto;
+}
+.register-box::before
+{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 740px;
+    background: linear-gradient(0deg, transparent, #f44336, #f44336);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+.register-box::after
+{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 740px;
+    background: linear-gradient(0deg, transparent, #f44336, #f44336);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+@keyframes animate
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform: rotate(360deg);
+    }
 }

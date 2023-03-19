@@ -13,6 +13,14 @@
                 {% else %}
                 <form method="post">
                     {% csrf_token %}
+                    
+                    {% comment %} form hibái {% endcomment %}
+                    {% if form.errors %}
+                        {% for hiba in form.errors %}
+                            <p>{{hiba}}</p>
+                        {% endfor %}
+                    {% endif %}
+
                     <div class="input-box">
                         {{ form.username.label_tag }}
                         {{ form.username }}

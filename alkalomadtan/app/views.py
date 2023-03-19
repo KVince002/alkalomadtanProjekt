@@ -214,12 +214,14 @@ def KijelentkezKerelem(request):
 # regisztráció 💤
 def Regisztral(request):
     print("Regisztral(request) / Regisztrálás")
-    regisztralasForm = Regisztralas(request.POST)
-    if regisztralasForm.is_valid():
-        regisztracio = regisztralasForm.Mentes()
-        login(request, regisztracio)
-        return redirect("Profil")
-    
+    if request.method == "POST":
+        regisztralasForm = Regisztralas(request.POST)
+        if regisztralasForm.is_valid():
+            regisztracio = regisztralasForm.Mentes()
+            login(request, regisztracio)
+            return redirect("Profil")
+    else:
+        regisztralasForm = Regisztralas(none)
     # válasz
     template = loader.get_template("app/auth/register.html")
     context = {

@@ -20,13 +20,14 @@
 /*---Login stlye---*/
 .login-box
 {
-    position:absolute;
+    position:relative;
     width: 380px;
     height: 420px;
     background:#f0f0f0;
     border-radius: 8px;
     overflow: hidden;
-    margin: 100px 800px;
+    /* margin: 100px 800px;*/
+    margin: auto;
 }
 @media(max-width:700px)
 {

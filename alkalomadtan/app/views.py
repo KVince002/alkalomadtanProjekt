@@ -217,11 +217,13 @@ def Regisztral(request):
     if request.method == "POST":
         regisztralasForm = Regisztralas(request.POST)
         if regisztralasForm.is_valid():
-            regisztracio = regisztralasForm.Mentes()
-            login(request, regisztracio)
+            felhasznalo = regisztralasForm.save(commit=False)
+            felhasznalo.username = felhasznalo.username.lower()
+            felhasznalo.save()
+            login(request, felhasznalo)
             return redirect("Profil")
     else:
-        regisztralasForm = Regisztralas(none)
+        regisztralasForm = Regisztralas()
     # válasz
     template = loader.get_template("app/auth/register.html")
     context = {

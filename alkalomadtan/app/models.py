@@ -11,6 +11,7 @@ import os
 # # munka
 class Munka(models.Model):
     class Meta:
+        # rendezés kattintások szerint csökkenő sorba
         ordering = ["-katt"]
     
     # munka neve
@@ -37,6 +38,21 @@ class Munka(models.Model):
         return f"Munka neve: {self.nev}, publikáló: {self.publikalo}, hely: {self.helye}"
 
 # jelentkezés modell
+
+def KonyvtarKezeles(instance, fajlNev):
+    print(type(instance))
+    # split() után tömböt kapunk
+    fajlNev_Nyers = fajlNev.split(".")
+    # eltároljuk a kiterjesztést
+    fajlNev_Kiterjesztes = fajlNev_Nyers[len(fajlNev_Nyers)-1]
+    # eltároljuk a fájl tényleges nevét
+    fajlNev_Elnevez = fajlNev.strip("." + fajlNev_Kiterjesztes)
+
+    # összerakás a kiegészítőkkel
+    fajlNev_Finom = fajlNev_Elnevez + "-{0}_{1}".format(instance.munkaVallalo.first_name, instance.munkaVallalo.last_name)+ f"({instance.munkaVallalo.id})." + fajlNev_Kiterjesztes
+    print(f"Finom fájlnév: {fajlNev_Finom}")
+    return "feltoltottDokumentumok/munka_{0}/{1}".format(instance.munka.id,fajlNev_Finom)
+
 class Jelentkezes(models.Model):
     # mukavállaló
     munkaVallalo = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -50,7 +66,7 @@ class Jelentkezes(models.Model):
     bemutatkozas = models.TextField(null=True, default="A jelentkező nem írt leírást.")
     # önéletrajz mentése
     felhId = models.CharField(max_length=10, null=False, default="")
-    melleklet = models.FileField(null = False, upload_to=f"feltoltottDokumentumok/")
+    melleklet = models.FileField(null = False, upload_to=KonyvtarKezeles, max_length=255)
 
     def __str__(self):
         return f"{self.munka} - {self.ido}-kor jelentkezett: {self.munkaVallalo}"

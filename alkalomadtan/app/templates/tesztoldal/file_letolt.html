@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Letöltés</title>
+</head>
+
+<body>
+    {% if felhasznalo.is_authenticated %}
+    <h1>{{munka.nev}}</h1>
+    <div>
+        {% for jelentkezo in jelentkezok %}
+        <!-- adott személy -->
+        <div>
+            <!-- neve -->
+            <div>
+                {{ jelentkezo.munkaVallalo.first_name}} {{ jelentkezo.munkaVallalo.last_name}}
+            </div>
+            <!-- email -->
+            <div>
+                {{ jelentkezo.munkaVallalo.email}}
+            </div>
+            <!-- rovid bemutato -->
+            <div>
+                {{ jelentkezo.bemutatkozas}}
+            </div>
+            <!-- időpont és bérigény-->
+            <div>
+                {{ jelentkezo.ido}}
+                <br>
+                {{ jelentkezo.berigeny }}
+            </div>
+            <!-- cv letöltés -->
+            <div>
+                <button name="button" , type="submit" , onclick="{{ jelentkezo.melleklet }}">Letöltés</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>Nincs jogusultságod! Jelentkezz be!</p>
+    {% endif %}
+</body>
+
+</html>

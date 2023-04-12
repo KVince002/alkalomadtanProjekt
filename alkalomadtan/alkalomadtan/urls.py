@@ -32,8 +32,13 @@ urlpatterns = [
     # ez az utvonal kifejezetten egy munkaára utal
     path("munkak/<int:munka_Id>", views.MunkaMegtekinto, name="MunkaReszlet"),
     # path("blog/", views.Blog, name="Blog"),
+
+    # Oldalak Profilhoz
     path("profil/", views.Profil, name="Profil"),
     path("profil/ujmunka/", views.Profil_UjMunka, name="ProfilUjMunka"),
+    # jelentkezők az adott munkára link és letöltés
+    path("profil/jelentkezok/<int:munka_Id>", views.Profil_JelentkezoMegtekinto, name="Jelentkezo_Per_Munka"),
+    # munkák amire jelentkeztél
     path("profil/jelentkezesek/", views.Profil_Jelentkezesek, name="ProfilJelentkezesek"),
     # a kijelentkező link
     path("kijelentkezes/", views.KijelentkezKerelem, name="KijelentkezKerelem"),

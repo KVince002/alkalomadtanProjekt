@@ -35,7 +35,7 @@ class Munka(models.Model):
     # munkaNapok = models.TextField()
 
     def __str__(self):
-        return f"Munka neve: {self.nev}, publikáló: {self.publikalo}, hely: {self.helye}"
+        return f"Azon:{self.id}, Munka neve: {self.nev}, publikáló: {self.publikalo}"
 
 # jelentkezés modell
 

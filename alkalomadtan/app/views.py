@@ -100,7 +100,7 @@ def Profil_UjMunka(request):
     template = loader.get_template("app/profile/profilePageAd.html")
 
     # munkák visszadása
-    munkak = ""
+    munkak = None
     try:
         munkak = list(Munka.objects.filter(publikalo = request.user.id).values())
     except:
@@ -112,6 +112,26 @@ def Profil_UjMunka(request):
         "felhasznalo":felhasznalo,
         "form":ujMunkaForm,
         "munka": munkak
+        }
+    return HttpResponse(template.render(context,request))
+
+# profil / jelentkezők megtekintése az adott munkához
+def Profil_JelentkezoMegtekinto(request, munka_Id):
+    felhasznalo = request.user
+    
+    # jelentkezők megtalálása
+    munkaraJelentkezok = None
+    try:
+        munkaraJelentkezok = list(Jelentkezes.objects.filter(munka = munka_Id))
+    except:
+        print(traceback.format_exc())
+        munkaraJelentkezok = None
+    
+    # visszaad
+    template = loader.get_template("tesztoldal/file_letolt.html")
+    context = {
+        "jelentkezok": munkaraJelentkezok,
+        "felhasznalo": felhasznalo
         }
     return HttpResponse(template.render(context,request))
 
@@ -157,7 +177,7 @@ def Profil_Jelentkezesek(request):
         "munkak": munkak,
         "eredmeny":eredmeny
         }
-    return HttpResponse(template.render(context,request))    
+    return HttpResponse(template.render(context,request))
 
 def MunkaMegtekinto(request, munka_Id):
     # munka megkeresése az id alapján

@@ -2,6 +2,11 @@ from django import forms
 from django.forms import ModelForm
 from app.models import *
 
+# django put method
+from django.views.generic.edit import put
+
+import traceback
+
 # autentikáló mudolok
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -73,3 +78,29 @@ class MunkaFrom(ModelForm):
     berMin = forms.IntegerField(label="Minimum bér")
     berMax = forms.IntegerField(label="Maximum bér")
     munkaKezd = forms.DateField(label="Munka kezdésének az időpontja")
+
+# Profil frissítő form
+class ProfilFrissForm(forms.Form):
+    emailCim = forms.EmailField(label = "Új email cím", max_length=250)
+    elonev = forms.CharField(label="Előnév", max_length=150)
+    utonev = forms.CharField(label="Utónév", max_length=150)
+    jelszo = forms.PasswordInput()
+
+    # ez a függvény szerzi meg az adatokat az <imput> mezőkből
+    def Adatfogo(self):
+        try:
+            emailCim_Fog = self.cleaned_data["emailCim"].lower()
+            elonev_Fog = self.cleaned_data["elonev"].lower()
+            utonev_Fog = self.cleaned_data["utonev"].lower()
+            jelszo_Fog = self.cleaned_data["jelszo"].lower()
+
+            return [emailCim_Fog, elonev_Fog, utonev_Fog, jelszo_Fog]
+        except Exception as ex:
+            print(
+                traceback.format_exception
+            )
+            return None
+    
+    # def Frissites(self):
+    #     kapottErtekek = self.Adatfogo()
+    #     django.db.models.Model.put()

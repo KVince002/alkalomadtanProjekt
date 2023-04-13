@@ -45,6 +45,9 @@ urlpatterns = [
     # az új regizstráló oldal
     path("regisztral/", views.Regisztral, name="Regisztral"), # type: ignore
 
+    # Profil adatainak frissítése
+    
+
     # django auth oldalak
     # Ezek a Django-ba beleépített oldalak "sablonok", ezek felül lehet írni, de csak óvatosan!
     # ez a django bejelentkezés kezelője

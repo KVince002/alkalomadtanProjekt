@@ -28,6 +28,7 @@ class Regisztralas(UserCreationForm):
         utoNev = self.cleaned_data["utoNev"].lower()
         return utoNev
 
+# munkára jelentkező form
 class JelentkezesFormModel(ModelForm):
     class Meta:
         model = Jelentkezes
@@ -51,11 +52,12 @@ class JelentkezesFormModel(ModelForm):
             instance.save()
         return instance
 
-# nagyon bugyuta form
+# Bejelentkezés form
 class BejelentkezesForm(forms.Form):
     email = forms.EmailField(label="Email címe", widget=forms.EmailInput)
     jelszo = forms.CharField(label="Jelszava", widget=forms.PasswordInput)
 
+# Uj munka form
 class MunkaFrom(ModelForm):
     class Meta:
         # melyik táblaát használja

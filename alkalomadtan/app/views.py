@@ -266,6 +266,8 @@ class ProfilRestView(APIView):
         felhasznaloFiok = get_object_or_404(User, pk = primaryKey)
         # form-ot hívjuk meg, de úgy hogy a form tudja a meglávő értékeket
         fiokAdatFrissitoForm = FelhasznaloPatchForm(instance=felhasznaloFiok)
+
+        print(request)
         
         template = loader.get_template("app/profile/profileModosit.html")
         context = {

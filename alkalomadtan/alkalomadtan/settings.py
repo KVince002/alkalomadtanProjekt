@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     # django rest framework tutorial
     # https://www.django-rest-framework.org/tutorial/1-serialization/
     'rest_framework',
-
     #
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,7 +47,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    #'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

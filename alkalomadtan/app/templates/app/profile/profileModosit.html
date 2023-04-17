@@ -4,10 +4,10 @@
 
 {% if felhasznalo.is_authenticated %}
 
-<form method="POST" action="{% url 'user_update' pk=user.pk %}">
+<form method="PATCH" action="{% url 'ProfilModosit' primaryKey=felhasznalo.pk %}">
     {% csrf_token %}
-    {{ form.as_table }}
-    <button type="submit">Update</button>
+    {{ form.as_p }}
+    <button type="submit">Frissít</button>
 </form>
 {% endif %}
 {% endblock %}

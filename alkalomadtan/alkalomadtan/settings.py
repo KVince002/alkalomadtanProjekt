@@ -32,7 +32,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "corsheaders",
+    # django rest framework tutorial
+    # https://www.django-rest-framework.org/tutorial/1-serialization/
+    'rest_framework',
+
+    #
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

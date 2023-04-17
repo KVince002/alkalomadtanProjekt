@@ -4,21 +4,22 @@
 
 {% if felhasznalo.is_authenticated %}
 
-            <div class="rightbox">
-                <div class="profile">
-                    <h1>Személyes adatok</h1>
-                    <h2>Felhasználó név</h2>
-                    <p>{{felhasznalo.username}}</p>
-                    <h2>Teljes név</h2>
-                    <p>{{felhasznalo.first_name}} {{felhasznalo.last_name}}<button class="btn">Change</button></p>
-                    <h2>Email</h2>
-                    <p>{{felhasznalo.email}}<button class="btn">Change</button></p>
-                    <h2>Jelszó</h2>
-                    <p>*******<button class="btn">Change</button></p>
-                </div>
-            </div>
-            </div>
-    </section>
+<div class="rightbox">
+    <div class="profile">
+        <h1>Személyes adatok</h1>
+        <h2>Felhasználó név</h2>
+        <p>{{felhasznalo.username}}</p>
+        <h2>Teljes név</h2>
+        <p>{{felhasznalo.first_name}} {{felhasznalo.last_name}}<button class="btn">Change</button></p>
+        <h2>Email</h2>
+        <p>{{felhasznalo.email}}<button class="btn">Change</button></p>
+        <h2>Jelszó</h2>
+        <p>*******<button class="btn">Change</button></p>
+        <a href="{% url 'ProfilModosit' felhasznalo.id%}">Értékek modosítása</a>
+    </div>
+</div>
+</div>
+</section>
 {% else %}
 <div class="rightbox">
     <div class="profile">
@@ -32,5 +33,5 @@
 </div>
 </div>
 </section>
-    {% endif %}
+{% endif %}
 {% endblock %}

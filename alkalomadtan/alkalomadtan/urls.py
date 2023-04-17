@@ -21,6 +21,9 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from django.shortcuts import redirect
 
+from rest_framework import routers
+
+
 urlpatterns = [
     # Admin oldal
     path('admin/', admin.site.urls),
@@ -44,9 +47,8 @@ urlpatterns = [
     path("kijelentkezes/", views.KijelentkezKerelem, name="KijelentkezKerelem"),
     # az új regizstráló oldal
     path("regisztral/", views.Regisztral, name="Regisztral"), # type: ignore
-
-    # Profil adatainak frissítése
-    
+    # Profil adatainak frissítése (rest)
+    path("profil/modosit/<int:primaryKey>/", views.ProfilRestView.as_view(), name="ProfilModosit"),
 
     # django auth oldalak
     # Ezek a Django-ba beleépített oldalak "sablonok", ezek felül lehet írni, de csak óvatosan!

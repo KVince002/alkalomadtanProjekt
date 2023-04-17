@@ -1,0 +1,13 @@
+{% extends 'app/layout/commonhead3.html' %}
+{% block content %}
+{% load static %}
+
+{% if felhasznalo.is_authenticated %}
+
+<form method="POST" action="{% url 'user_update' pk=user.pk %}">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <button type="submit">Update</button>
+</form>
+{% endif %}
+{% endblock %}

@@ -1,9 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from app.models import *
-
-# django put method
-from django.views.generic.edit import put
+from django.contrib.auth.models import User
 
 import traceback
 
@@ -104,3 +102,23 @@ class ProfilFrissForm(forms.Form):
     # def Frissites(self):
     #     kapottErtekek = self.Adatfogo()
     #     django.db.models.Model.put()
+
+# Patch RestAPI felhasználó frissítő form
+class FelhasznaloPatchForm(forms.ModelForm):
+    
+    class Meta:
+        model = User
+        # minden mező
+        fields = ("__all__")
+        # ... de nem ezek
+        exclude = ["password", "username"]
+
+        def save(self, commit=True):
+            # felhasznalo változó mentése
+            felhasznalo = super().save(commit=False)
+            # a "commit" igaz
+            if commit:
+                # végleg menti a felhasznalo (azaz User) modelt
+                felhasznalo.save()
+            return felhasznalo
+

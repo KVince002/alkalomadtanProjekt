@@ -109,9 +109,9 @@ class FelhasznaloPatchForm(forms.ModelForm):
     class Meta:
         model = User
         # minden mező
-        fields = ("__all__")
+        fields = ["first_name", "last_name", "email"]
         # ... de nem ezek
-        exclude = ["password", "username"]
+        # exclude = ["password", "username"]
 
         def save(self, commit=True):
             # felhasznalo változó mentése

@@ -772,3 +772,11 @@ textarea {
         margin: -30px;
     }
 }
+/* hiba foltozások */
+.jobs h1 {
+    color: black;
+}
+
+.jobs-col h3 {
+    color: black;
+}

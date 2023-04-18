@@ -8,4 +8,5 @@ alkalomadtan/feltoltottDokumentumok/munka_1/
 /alkalomadtan/__pycache__
 /alkalomadtan/alkalomadtan/__pycache__/settings.cpython-310.pyc
 /alkalomadtan/app/__pycache__/
-
+/alkalomadtan/app/__pycache__
+alkalomadtan/app/__pycache__/forms.cpython-311.pyc

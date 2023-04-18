@@ -109,16 +109,25 @@ class FelhasznaloPatchForm(forms.ModelForm):
     class Meta:
         model = User
         # minden mező
-        fields = ["first_name", "last_name", "email"]
-        # ... de nem ezek
+        fields = ["first_name", "last_name", "email", "password"]
+        # de nem ezek
         # exclude = ["password", "username"]
 
-        def save(self, commit=True):
-            # felhasznalo változó mentése
-            felhasznalo = super().save(commit=False)
-            # a "commit" igaz
-            if commit:
-                # végleg menti a felhasznalo (azaz User) modelt
-                felhasznalo.save()
-            return felhasznalo
+    def save(self, commit=True):
+        try:
+            eloNev = self.cleaned_data["first_name"].lower()
+            utoNev = self.cleaned_data["last_name"].lower()
+            email = self.cleaned_data["email"].lower()
+            jelszo = self.cleaned_data["password"].lower()
+
+            # érték ellenőrzés
+
+            # mentés
+            
+
+        except Exception as ex:
+            print(
+                traceback.format_exception, ex.with_traceback
+            )
+            return None
 

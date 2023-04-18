@@ -266,8 +266,6 @@ class ProfilRestView(APIView):
         felhasznaloFiok = get_object_or_404(User, pk = primaryKey)
         # form-ot hívjuk meg, de úgy hogy a form tudja a meglávő értékeket
         fiokAdatFrissitoForm = FelhasznaloPatchForm(instance=felhasznaloFiok)
-
-        print(request)
         
         template = loader.get_template("app/profile/profileModosit.html")
         context = {
@@ -287,12 +285,20 @@ class ProfilRestView(APIView):
 
         # from ellenőrzés
         if fiokAdatFrissitoForm.is_valid():
-            fiokAdatFrissitoForm.save()
+            fiokAdatFrissitoForm.save(commit=True)
             # visszadja hogy minden rendben
             return REST_Response(status=status.HTTP_200_OK)
         else:
             # visszaadja hogy rossz kérelmet kapott
             REST_Response(fiokAdatFrissitoForm.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        template = loader.get_template("app/profile/profileModosit.html")
+        context = {
+        "cim": "Profil adatainak módosítása",
+        "form": fiokAdatFrissitoForm,
+        "felhasznalo": felhasznaloJelenleg
+        }
+        return HttpResponse(template.render(context, request))
 
 # profil modosítás REST PUT "function based views"
 # @api_view(["PUT", "POST", "PATCH"])

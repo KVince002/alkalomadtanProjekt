@@ -56,11 +56,11 @@ def Allasok(request):
         }
     return HttpResponse(template.render(context,request))
 
-# blog
-def Blog(request):
-    template = loader.get_template("app/blog.html")
+# kapcsolat
+def Kapcsolat(request):
+    template = loader.get_template("app/contact.html")
     context = {
-        "cim": "Blog"
+        "cim": "Kapcsolat"
         }
     return HttpResponse(template.render(context,request))
 

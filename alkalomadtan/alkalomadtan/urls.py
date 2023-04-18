@@ -32,9 +32,9 @@ urlpatterns = [
     path("", views.Homepage, name="Kezdolap"),
     path("rolunk/", views.Rolunk, name="Rolunk"),
     path("munkak/", views.Allasok, name="Munkak"),
+    path("kapcsolat/", views.Kapcsolat, name="Kapcsolat"),
     # ez az utvonal kifejezetten egy munkaára utal
     path("munkak/<int:munka_Id>", views.MunkaMegtekinto, name="MunkaReszlet"),
-    # path("blog/", views.Blog, name="Blog"),
 
     # Oldalak Profilhoz
     path("profil/", views.Profil, name="Profil"),

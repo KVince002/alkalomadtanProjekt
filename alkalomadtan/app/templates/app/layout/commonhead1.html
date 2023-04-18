@@ -27,8 +27,8 @@
                 <i class="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
                     <li><a href="{% url 'Kezdolap' %}">HOME</a></li>
-                    <li><a href="{% url 'Rolunk' %}">RÓLUNK</a></li>
                     <li><a href="{% url 'Munkak' %}">ÁLLÁSOK</a></li>
+                    <li><a href="{% url 'Kapcsolat' %}">KAPCSOLAT</a></li>
                     <li><a href="{% url 'Profil' %}">PROFILOM<i class="fa-user fa-color"></li></a></li>
                 </ul>
             </div>
@@ -39,7 +39,7 @@
             <h1><span class="auto-type2"></span></h1>
             <p>Fiatal vagy és csak nyárra keresel munkát? Netán másodállást keresel fizetés kiegészítésnek? <br> Ezen az oldalon megtalálod!</p>
             <a href="{% url 'Regisztral' %}" class="hero-btn">Regisztráljon most</a>
-        </div>
+        </div> 
     </section>
     {% block content %}
     {% endblock content %}

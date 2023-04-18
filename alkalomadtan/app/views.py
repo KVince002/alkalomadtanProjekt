@@ -49,7 +49,7 @@ def Allasok(request):
 
     print(f"allasok végül: {type(allasok)}")
 
-    template = loader.get_template("app/logedJobs.html")
+    template = loader.get_template("app/jobs.html")
     context = {
         "cim": "Állások",
         "allasok": allasok

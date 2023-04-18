@@ -1,42 +1,6 @@
-<!DOCTYPE html>
-<html lang="hu">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alkalomadtán</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body>
-    <section class="sub-header">
-        <nav>
-            <a href="index.html"><img src="images/logo.png" alt="logo" title="logo"></a>
-            <div class="nav-links white" id="navLinks">
-                <i class="fa fa-times" onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="about.html">RÓLUNK</a></li>
-                    <li><a href="jobs.html">ÁLLÁSOK</a></li>
-                    <li><a href="contact.html">ELÉRHETŐSÉG</a></li>
-                    <li><a href="login.html" target="_blank">BEJELENTKEZÉS</a></li>
-                </ul>
-            </div>
-            <i class="fa fa-bars" onclick="showMenu()"></i>
-        </nav>
-        <h1>Állások</h1>
-    </section>
-
-    <!----jobs---->
+{% extends 'app/layout/commonhead1.html' %}
+{% block content %}
+{% load static %}
 
     <!--- Jobs----->
     <section class="jobs">
@@ -70,20 +34,20 @@
         <h1>Amit a Munkáltatók Garantálnak</h1>
         <div class="row">
             <div class="employers-col">
-                <img src="images/rugalmasság.jpg" alt="Rugalmasság" title="Rugalmasság">
+                <img src="{% static 'images/rugalmasság.jpg' %}" alt="Rugalmasság" title="Rugalmasság">
                 <h3>Rugalmasság</h3>
                 <p>Egy héten csak kétszer érsz rá dolgozni egyetem mellett? Semmi gond, hirdetőink rugalmasan állnak a
                     tanulmányaid és munkaidődhöz! Te mondod mikor akarsz menni, és hány napot egy héten! Ugye milyen jól
                     hangzik?</p>
             </div>
             <div class="employers-col">
-                <img src="images/kézfogás.jpg" alt="Kézfogás" title="Kézfogás">
+                <img src="{% static 'images/kézfogás.jpg' %}" alt="Kézfogás" title="Kézfogás">
                 <h3>Megbízhatóság</h3>
                 <p>Mivel alkalmi munkáról van szó, nem sokan bíznak meg egymásban, de ezek a meghirdetett munkák valósak
                     és léteznek, ezeket mi és hirdetőink garantálják!</p>
             </div>
             <div class="employers-col">
-                <img src="images/érvényesség.jpg" alt="Érvényesség" title="Érvényesség">
+                <img src="{% static 'images/érvényesség.jpg' %}" alt="Érvényesség" title="Érvényesség">
                 <h3>Érvényesség</h3>
                 <p>Ha már megbízhatóság, akkor érvenyesség is kéz a kézben jár! Kollégáink a folyamatosan ellenőrzik a
                     fiókok érvényességét, és hírdetéseink komolyságát!</p>
@@ -92,51 +56,4 @@
 
     </section>
 
-
-
-    <!----Footer---->
-
-    <section class="footer" id="footer">
-        <h4>Közösségi Platformjaink</h4>
-        <p>Facebook-on és Instagram-on is jelen vagyunk. <br> Kövess be minket, hogy ne maradj le a legújabb híreinkről,
-            és munkáinkról.</p>
-        <div class="icons">
-            <a href=""><i class="fa fa-facebook"></i></a>
-            <a href=""><i class="fa fa-instagram"></i></a>
-            <a href=""><i class="fa fa-linkedin"></i></a>
-        </div>
-    </section>
-
-    <!----Javascript for toggle menu-->
-    <script>
-        var navLinks = document.getElementById("navLinks");
-
-        function showMenu() {
-            navLinks.style.right = "0";
-        }
-        function hideMenu() {
-            navLinks.style.right = "-200px";
-        }
-
-        const num = document.querySelectorAll(".num");
-        const speed = 200;
-
-        num.forEach((count) => {
-            const animate = () => {
-                const target = +count.getAttribute("num");
-                const data = +count.innerText;
-
-                const time = target / speed;
-
-                if (data < target) {
-                    count.innerText = Math.ceil(data + time);
-                    setTimeout(animate, 5)
-                }
-            }
-            animate();
-        })
-    </script>
-
-</body>
-
-</html>
+{% endblock %}

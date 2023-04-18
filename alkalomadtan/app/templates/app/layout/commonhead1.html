@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-</head>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 
@@ -35,6 +34,13 @@
             </div>
                 <i class="fa fa-bars"  onclick="showMenu()"></i>
         </nav>
+        <div class="text-box">
+            <h1><span class="auto-type"></span></h1>
+            <h1><span class="auto-type2"></span></h1>
+            <p>Fiatal vagy és csak nyárra keresel munkát? Netán másodállást keresel fizetés kiegészítésnek? <br> Ezen az oldalon megtalálod!</p>
+            <a href="{% url 'Regisztral' %}" class="hero-btn">Regisztráljon most</a>
+        </div>
+    </section>
     {% block content %}
     {% endblock content %}
     {% load static%}

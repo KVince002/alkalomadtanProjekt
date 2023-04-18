@@ -29,9 +29,23 @@ def Homepage(request):
 
 # rólonk oldal
 def Rolunk(request):
+    # felhasználó
+    felhasznalo = request.user
+
     template = loader.get_template("app/about.html")
     context = {
-        "cim": "Rólunk"
+        "cim": "Rólunk",
+        "felhasznalo": felhasznalo
+        }
+    return HttpResponse(template.render(context,request))
+
+# állásokat bemutató oldal
+def AllasokBemutato(request):
+    print("Állaások bemutatójának / Allasok(request)")
+
+    template = loader.get_template("app/jobs.html")
+    context = {
+        "cim": "Állások bemutató",
         }
     return HttpResponse(template.render(context,request))
 
@@ -49,7 +63,7 @@ def Allasok(request):
 
     print(f"allasok végül: {type(allasok)}")
 
-    template = loader.get_template("app/jobs.html")
+    template = loader.get_template("app/logedJobs.html")
     context = {
         "cim": "Állások",
         "allasok": allasok

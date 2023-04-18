@@ -1,23 +1,6 @@
 {% extends 'app/layout/commonhead1.html' %}
 {% block content %}
 {% load static %}
-    <section class="sub-header">
-        <nav>  
-            <a href="index.html"><img src="{% static 'logo.png' %}" alt="logo" title="logo"></a>
-            <div class="nav-links white" id="navLinks">
-                <i class="fa fa-times" onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="{% url 'Kezdolap' %}">HOME</a></li>
-                    <li><a href="{% url 'Rolunk' %}">RÓLUNK</a></li>
-                    <li><a href="{% url 'Munkak' %}">ÁLLÁSOK</a></li>
-                    <li><a href="profilePage.html">PROFILOM<i class="fa-user fa-color"></i></a></li><!----Itt még a icon nem jeleníti meg, illetve a linket beállítottam a saját módszerem alapján----> 
-                </ul>
-            </div>
-            <i class="fa fa-bars"  onclick="showMenu()"></i>
-        </nav>
-        <h1>Állások</h1>
-    </section>
-
 <!----Munkák---->         
 
 <section class="jobs">

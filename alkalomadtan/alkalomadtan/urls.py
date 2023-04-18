@@ -32,6 +32,7 @@ urlpatterns = [
     path("", views.Homepage, name="Kezdolap"),
     path("rolunk/", views.Rolunk, name="Rolunk"),
     path("munkak/", views.Allasok, name="Munkak"),
+    path("munka_bemutato/",views.AllasokBemutato,name="MunkaBemutato"),
     path("kapcsolat/", views.Kapcsolat, name="Kapcsolat"),
     # ez az utvonal kifejezetten egy munkaára utal
     path("munkak/<int:munka_Id>", views.MunkaMegtekinto, name="MunkaReszlet"),

@@ -1,49 +1,51 @@
 {% extends 'app/layout/commonhead3.html' %}
 {% block content %}
-{% load static %} 
+{% load static %}
+
 {% if felhasznalo.is_authenticated %}
-            <div class="rightbox">
-                <div class="profile">
-                    <h1>Jelentkezéseim</h1>
-                    {% if jelentkezesek is not none %}
-                    <table>
-                        <thead>
-                            <th>
-                                <td>Jelentkezéseid száma: </td>
-                                <td>{{jelentkezesek|length}}</td>
-                            </th>
-                        </thead>
-                        <tbody>
-                        {% for elem in eredmeny %}
-                            {% for belsoElem in elem %}
-                            <tr>
-                                <td>
-                                    {{belsoElem.nev}}
-                                </td>
-                                <td>
-                                    <a>Megtekintés</a>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                    {% else %}
-                    <h2>Egyenlőre nem jelentkeztél egy munkára se...</h2>
-                    {% endif %}
-                </div>
-            </div>
-            </div>
-    </section>
+<div class="rightbox">
+    <div class="profile">
+        <h1>Jelentkezéseim</h1>
+        {% if jelentkezesek is not none %}
+        <table>
+            <thead>
+                <th>
+                <td>Jelentkezéseid száma: </td>
+                <td>{{jelentkezesek|length}}</td>
+                </th>
+            </thead>
+            <tbody>
+                {% for elem in eredmeny %}
+                {% for belsoElem in elem %}
+                <tr>
+                    <td>
+                        {{belsoElem.nev}}
+                    </td>
+                    <td>
+                        <a>Megtekintés</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <h2>Egyenlőre nem jelentkeztél egy munkára se...</h2>
+        {% endif %}
+    </div>
+</div>
+</div>
+</section>
+<!----Footer---->
 {% else %}
 <div class="rightbox">
     <div class="profile">
-        <h1>Nem nem vagy bejelentezeve! Kérlek jelentkbe, vagy hozz lére egy profilt!</h1>
+        <h1>Nem nem vagy bejelentezeve! Kérlek jelentkezz be, vagy hozz lére egy profilt!</h1>
         <h2>Bejelentkezés</h2>
         <a href="{% url 'bejelentkezes_auth' %}">Bejelentkezés</a>
         <h2>Regisztráció</h2>
         {% comment %} Kell majd egy rendes regisztrációt írni! {% endcomment %}
-        <a href="{% url 'tesztRegisztral' %}">Regisztrálás</a>
+        <a href="{% url 'Regisztral' %}">Regisztrálás</a>
     </div>
 </div>
 </div>

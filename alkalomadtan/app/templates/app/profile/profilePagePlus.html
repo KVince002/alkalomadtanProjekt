@@ -1,0 +1,46 @@
+{% extends 'app/layout/commonhead3.html' %}
+{% block content %}
+{% load static %}
+
+{% if felhasznalo.is_authenticated %}
+            <div class="rightbox long">
+                <div class="profile">   
+                    <h1>Állást hirdetek</h1>
+                    <div class="description">
+                        <div class="contact"><!--Ez a div csak arra szolgál hogy könnyen megtudjam formázni az inputokat, de itt is description div-be rakom bele-->
+                            <form action="">
+                                <h3>Hirdető neve:</h3>
+                                <input type="text" placeholder="Teljes név..." required="Név megadása kötelező">
+                                <h3>Hírdető cég neve(ha van):</h3>
+                                <input type="text" placeholder="Cég neve...">
+                                <h3>Munka helyszíne:</h3>
+                                <input type="text" placeholder="Helyszín..." required="Helyszín megadása kötelező">
+                                <h3>Munka időpontja:</h3>
+                                <input type="text" placeholder="Időpont..." required="Időpont megadása kötelező">
+                                <h3>Munka leírása:</h3>
+                                <textarea rows="5" placeholder="Leírás..."></textarea><!----Hogy pontosan milyen adatokat kell leadni a jelentkezéshez ezen lehet változtatni természetesen, de első körbe ezek jutottak eszembe-->
+                                <h3>Bér:</h3>
+                                <input type="text" placeholder="0Ft..." required="Bér megadása kötelező">
+                                <button class="hero-btn black-btn place-btn">Meghirdetem</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </section>
+    {% else %}
+    <div class="rightbox">
+        <div class="profile">
+            <h1>Nem nem vagy bejelentezeve! Kérlek jelentkezz be, vagy hozz lére egy profilt!</h1>
+            <h2>Bejelentkezés</h2>
+            <a href="{% url 'bejelentkezes_auth' %}">Bejelentkezés</a>
+            <h2>Regisztráció</h2>
+            {% comment %} Kell majd egy rendes regisztrációt írni! {% endcomment %}
+            <a href="{% url 'Regisztral' %}">Regisztrálás</a>
+        </div>
+    </div>
+    </div>
+    </section>
+    {% endif %}
+    {% endblock %}

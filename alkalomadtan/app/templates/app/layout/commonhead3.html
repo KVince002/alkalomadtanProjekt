@@ -18,31 +18,28 @@
 </head>
 <section class="header">
     <nav class="logo">
-        <a href="index.html"><img src="images/logo.png" alt=""></a>
+        <a href="index.html"><img src="{% static 'images/logo.png' %}" alt=""></a>
     </nav>
     <div class="container">
-        {% comment %} kivettem a reklámot {% endcomment %}
-        {% comment %} <div id="asd">
-            <h1 class="asd">asd</h1>
-            <div class="CTA">
-                <h1>ÓRÁNKÉNT 3000Ft</h1>
-            </div>
-        </div> {% endcomment %}
         <div class="leftbox links">
             <nav>
+                {% comment %} profil adatok {% endcomment %}
                 <a href="{% url 'Profil' %}">
                     <i class="fa fa-user active"></i>
                 </a>
+                {% comment %} jelentkezések menú {% endcomment %}
                 <a href="{% url 'ProfilJelentkezesek' %}">
                     <i class="fa fa-briefcase"></i>
                 </a>
+                {% comment %} már meglévő munkák {% endcomment %}
                 <a href="{% url 'ProfilUjMunka' %}">
                     <i class="fa fa-plus-circle"></i>
                 </a>
-                {% comment %} szerintem ez nem fog kelleni {% endcomment %}
-                {% comment %} <a href="profilePageFile.html">
-                    <i class="fa fa-file"></i>
-                </a> {% endcomment %}
+                {% comment %} Új munka hozzáadása menü {% endcomment %}
+                <a href="profilePagePlus.html">
+                    <i class="fa fa-plus-circle"></i>
+                </a>
+                {% comment %} kijelentkezés {% endcomment %}
                 <a href="{% url 'KijelentkezKerelem' %}">
                     <i class="fa fa-sign-out"></i>
                 </a>

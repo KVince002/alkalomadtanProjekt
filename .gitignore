@@ -12,3 +12,5 @@ alkalomadtan/feltoltottDokumentumok/munka_1/
 /alkalomadtan/app/__pycache__/forms.cpython-311.pyc
 alkalomadtan/app/__pycache__/forms.cpython-311.pyc
 alkalomadtan/app/__pycache__/views.cpython-311.pyc
+alkalomadtan/app/templates/app/profile/profilePagePlus.html
+alkalomadtan/app/__pycache__/views.cpython-311.pyc

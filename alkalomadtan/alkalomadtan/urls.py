@@ -39,7 +39,8 @@ urlpatterns = [
 
     # Oldalak Profilhoz
     path("profil/", views.Profil, name="Profil"),
-    path("profil/ujmunka/", views.Profil_UjMunka, name="ProfilUjMunka"),
+    path("profil/meglevoMunka/", views.Profil_MeglevoMunka, name="ProfilMeglevoMunka"),
+    path("profil/uj_munka/", views.Profil_UjMunka, name="ProfilUjMunka"),
     # jelentkezők az adott munkára link és letöltés
     path("profil/jelentkezok/<int:munka_Id>", views.Profil_JelentkezoMegtekinto, name="Jelentkezo_Per_Munka"),
     # munkák amire jelentkeztél

@@ -94,13 +94,33 @@ def Profil(request):
         }
     return HttpResponse(template.render(context,request))
 
-# profil / új munka
-def Profil_UjMunka(request):
+# profil / meghírdetett munkák
+def Profil_MeglevoMunka(request):
     userId = request.user.id
     userUsername = request.user.username
     felhasznalo = request.user
     print(f"Profil_UjMunka(request) - {userUsername} ({userId})")
+    
+    # munkák visszadása
+    munkak = None
+    try:
+        munkak = list(Munka.objects.filter(publikalo = request.user.id).values())
+    except:
+        print(traceback.format_exc())
+        munkak = None
+    
+    template = loader.get_template("app/profile/profilePageAd.html")
+    context = {
+        "cim": "Profilod",
+        "felhasznalo":felhasznalo,
+        "munka": munkak
+        }
+    return HttpResponse(template.render(context,request))
 
+# profil / új munka
+def Profil_UjMunka(request):
+    ujMunkaForm = None
+    felhasznalo = request.user
     if request.POST:
         if request.user.is_authenticated:
             ujMunkaForm = MunkaFrom(request.POST)
@@ -116,23 +136,15 @@ def Profil_UjMunka(request):
                 print(ujMunkaForm.errors)         
     else:
         ujMunkaForm = MunkaFrom()
-    template = loader.get_template("app/profile/profilePageAd.html")
-
-    # munkák visszadása
-    munkak = None
-    try:
-        munkak = list(Munka.objects.filter(publikalo = request.user.id).values())
-    except:
-        print(traceback.format_exc())
-        munkak = None
-    
+    template = loader.get_template("app/profile/profilePagePlus.html")
     context = {
         "cim": "Profilod",
         "felhasznalo":felhasznalo,
         "form":ujMunkaForm,
-        "munka": munkak
         }
     return HttpResponse(template.render(context,request))
+
+
 
 # profil / jelentkezők megtekintése az adott munkához
 def Profil_JelentkezoMegtekinto(request, munka_Id):

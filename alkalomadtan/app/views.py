@@ -245,7 +245,7 @@ def MunkaMegtekinto(request, munka_Id):
             jelentkezesMento.munka = Munka.objects.get(id=munka_Id)
             jelentkezesMento.save()
             print(jelentkezesMento)
-            redirect("Kezdolap")
+            redirect("ProfilJelentkezesek")
     else:
         munkaJelentkezes = JelentkezesFormModel()
 

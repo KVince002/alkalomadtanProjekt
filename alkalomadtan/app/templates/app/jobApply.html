@@ -1,23 +1,6 @@
 {% extends 'app/layout/commonhead1.html' %}
 {% block content %}
 {% load static %}
-<body>
-    <section class="sub-header">
-        <nav>  
-            <a href="index.html"><img src="{% static 'logo.png' %}" alt="logo" title="logo"></a>
-            <div class="nav-links white" id="navLinks">
-                <i class="fa fa-times" onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="{% url 'Kezdolap' %}">HOME</a></li>
-                    <li><a href="{% url 'Rolunk' %}">RÓLUNK</a></li>
-                    <li><a href="{% url 'Munkak' %}">ÁLLÁSOK</a></li>
-                    <li><a href="{% url 'Profil' %}">PROFILOM<i class="fa-user fa-color"></li></a></li><!----Itt még a icon nem jeleníti meg, illetve a linket beállítottam a saját módszerem alapján----> 
-                </ul>
-            </div>
-            <i class="fa fa-bars"  onclick="showMenu()"></i>
-        </nav>
-        <h1>Állások</h1>
-    </section>
 
 <!----Jelentkezés---->         
 
@@ -66,13 +49,13 @@
                     <div class="contact"><!--Ez a div csak arra szolgál hogy könnyen megtudjam formázni az inputokat, de itt is description div-be rakom bele-->
                         <!-- Form hibák -->
                         {% if user.is_authenticated %}
-                        {% if form.errors %}
-                        <ul class="errors">
-                            {% for error in form.errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
+                            {% if form.errors %}
+                            <ul class="errors">
+                                {% for error in form.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
 
                         {% comment %} form generálás {% endcomment %}
                         <form method="POST" enctype="multipart/form-data">
@@ -84,7 +67,7 @@
                                 {{field}}
                             </div>
                             {% endfor %}
-                            <input type="submit" value="Elküld"/>
+                            <input type="submit" value="Elküld" class="hero-btn black-btn"/>
                         </form>
                         {% else %}
                             <div>

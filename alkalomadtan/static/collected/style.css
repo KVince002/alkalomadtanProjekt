@@ -780,3 +780,9 @@ textarea {
 .jobs-col h3 {
     color: black;
 }
+
+/* Kiegészítés Django-hoz */
+.description h4, span, label{
+    color: black;
+    font-style:normal;
+}

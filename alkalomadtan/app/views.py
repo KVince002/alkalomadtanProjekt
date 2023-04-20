@@ -130,7 +130,11 @@ def Profil_UjMunka(request):
                 mentendo = ujMunkaForm.save(commit=False)
                 mentendo.publikalo = User.objects.get(pk=request.user.id)
                 mentendo.save()
-                print("Mentve!")
+                print("Munka mentve!")
+                print(mentendo)
+
+                return redirect("ProfilMeglevoMunka")
+
             else:
                 print("invalid form")
                 print(ujMunkaForm.errors)         

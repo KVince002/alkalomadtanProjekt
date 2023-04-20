@@ -9,40 +9,24 @@
 <div class="rightbox">
     <div class="profile">
         <h1>Meghirdetett Állásaim</h1>
+        <!-- Előzmény -->
         <!-- for ciklus ami kiírja a meghírdetett munkákat -->
         {% for i in munka %}
-        <div>
-            <h2>Munka neve: {{i.nev}}</h2>
-            <table>
-                <!-- tábla feje -->
-                <thead>
-                    <th>Részletek:</th>
-                </thead>
-                <!-- tábla teste -->
-                <tbody>
-                    <tr>
-                        <td>Helye: </td>
-                        <td>{{i.helye}}</td>
-                    </tr>
-                    <tr>
-                        <td>Bér (minimum -> bár maximum): </td>
-                        <td>{{i.berMin}} -> {{i.berMax}}</td>
-                    </tr>
-                    <tr>
-                        <td>Munka kezdése: </td>
-                        <td>{{i.munkaKezd}}</td>
-                    </tr>
-                    <tr>
-                        <td>Megtekintés: </td>
-                        <td>{{i.katt}}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="">
+            <h3>Munka neve: <u>{{i.nev}}</u></h3>
+            <h3>Helye: </h3>
+            <p>{{i.helye}}</p>
+            <h3>Bér (minimum -> bár maximum):</h3>
+            <p>{{i.berMin}} -> {{i.berMax}}</p>
+            <h3>Munka kezdése: </h3>
+            <p>{{i.munkaKezd}}</p>
+            <h3>Megtekintés: </h3>
+            <p>{{i.katt}}</p>
             <br>
 
         </div>
         {% endfor %}
-    </div> -->
+    </div>
 </div>
 </div>
 </div>

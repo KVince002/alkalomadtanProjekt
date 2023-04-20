@@ -126,6 +126,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = "static/collected"
+
 # static fájlok helye
 STATICFILES_DIRS = [
     BASE_DIR / 'app/static',

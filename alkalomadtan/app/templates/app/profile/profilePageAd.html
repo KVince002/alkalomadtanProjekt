@@ -11,9 +11,20 @@
         <h1>Meghirdetett Állásaim</h1>
         <!-- Előzmény -->
         <!-- for ciklus ami kiírja a meghírdetett munkákat -->
+        <table>
+            <th>
+                <td>
+                    <i class="fa fa-arrow-left" id="lapozoVissza" aria-hidden="true"></i>
+                </td>
+                <td>
+                    <i class="fa fa-arrow-right" id="lapozoElore" aria-hidden="true"></i>
+                </td>
+            </th>
+        </table>
+        <div id="mindenMunka">
         {% for i in munka %}
-        <div class="">
-            <h3>Munka neve: <u>{{i.nev}}</u></h3>
+        <div class="profile munka_{{i.id}} munkaMegjl" id="">
+            <h3>Munka neve: <u id="">{{i.nev}}</u></h3>
             <h3>Helye: </h3>
             <p>{{i.helye}}</p>
             <h3>Bér (minimum -> bár maximum):</h3>
@@ -23,9 +34,9 @@
             <h3>Megtekintés: </h3>
             <p>{{i.katt}}</p>
             <br>
-
         </div>
         {% endfor %}
+        </div>
     </div>
 </div>
 </div>

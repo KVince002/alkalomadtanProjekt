@@ -48,24 +48,23 @@
 {% block content %}
 {% endblock %}
 {% load static %}
-<body>
-    
     <!-- Script fájlok-->
     <script src="{% static 'script.js' %}"></script>
-    <script src="{% static 'bootstrap.min.js' %}"></script>
-
     <!-- Script az oldalon-->
     <script>
         var navLinks = document.getElementById("navLinks");
 
         function showMenu()
         {
-          navLinks.style.right = "0";  
+            navLinks.style.right = "0";  
         }
         function hideMenu()
         {
             navLinks.style.right = "-200px";
         }
+    </script>
+
+    <script src="{% static 'profil_publikaltMunkak.js' %}">
     </script>
 </body>
 </html>

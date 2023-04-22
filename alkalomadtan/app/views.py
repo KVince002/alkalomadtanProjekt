@@ -6,6 +6,7 @@ from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned, MiddlewareNotUsed, SuspiciousOperation
 from app.models import *
+from django.core import serializers
 
 # django rest
 from rest_framework.decorators import api_view
@@ -108,6 +109,13 @@ def Profil_MeglevoMunka(request):
     except:
         print(traceback.format_exc())
         munkak = None
+
+    # # Javascript ajax lekérdezéshez
+    # if request.is_ajax() and request.method=="POST":
+    #     print("AJAX Kérelem fogadva")
+    #     munkakVissza = serializers.serialize("json", Munka.objects.filter(publikalo = request.user.id))
+    #     print("munkakVissza JSON: ", munkakVissza)
+
     
     template = loader.get_template("app/profile/profilePageAd.html")
     context = {

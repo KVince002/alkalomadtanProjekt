@@ -175,42 +175,42 @@ def Profil_Jelentkezesek(request):
     userUsername = request.user.username
     felhasznalo = request.user
     print(f"Profil_UjMunka(request) - {userUsername} ({userId})")
-    #jelentkezések keresése
-    jelentkezesek = []
+
+    # új kód
+    # felhasználó jelentkezésit tároló lista aminek az eleme a dict
+    jelentkezesekLista = [ ]
+    # amire a felhasználó jelentkezett munkák
+    munkakLista = []
     try:
-        jelentkezesek = list(Jelentkezes.objects.filter(munkaVallalo = userId).values())
-        print("jelentkezesek száma: ", len(jelentkezesek))
-        print("jelentkezesek típusa: ", type(jelentkezesek))
-        print(jelentkezesek)
-    except:
-        print(traceback.format_exc())
-        jelentkezesek = None
-    
-    #munkák
-    munkak = []
-    try:
-        munkak = list(Munka.objects.all().values())
-    except:
-        print(traceback.format_exc())
-    
-    # munkák és jelentkezés
-    eredmeny = []
-    try:
-        for i in jelentkezesek:
-            eredmeny.append(list(Munka.objects.filter(id = i["munka_id"]).values()))
-            print("Eredmény típusa: \t", type(eredmeny))
-            print("Eredmény\n",eredmeny)
-    except:
-        print(traceback.print_exc())
-    
+        jelentkezesekLista =list(Jelentkezes.objects.filter(munkaVallalo = userId).values())
+
+        for jelentkezett in jelentkezesekLista:
+            # hozzáadjuk a listához (munkaLista), majd a lista minden eleme egy lista lesz, amiben egy dict lesz
+            munkakLista.append(list(Munka.objects.filter(id = jelentkezett.get("munka_id")).values()))
+
+        # munkaLista "kicsomagolás"
+        munakakKicsomagSeged = []
+        for kulsoHej in munkakLista:
+            for belsoHej in kulsoHej:
+                munakakKicsomagSeged.append(belsoHej)
+        
+        munkakLista = munakakKicsomagSeged
+
+        print("JelentkezesekLista: ", jelentkezesekLista)
+        print("MunkakLista: ",munkakLista)
+
+    except Exception as ex:
+        print(ex)
+        print(ex.with_traceback)
+        print(traceback.format_stack)
+
     # visszaad
     template = loader.get_template("app/profile/profilePageApplied.html")
     context = {
         "cim": "Profilod",
         "felhasznalo":felhasznalo,
-        "jelentkezesek": jelentkezesek,
-        "munkak": munkak,
-        "eredmeny":eredmeny
+        "jelentkezesekLista": jelentkezesekLista,
+        "munkakLista": munkakLista
         }
     return HttpResponse(template.render(context,request))
 
@@ -347,7 +347,7 @@ class ProfilRestView(APIView):
 #             # visszaadja hogy rossz kérelmet kapott
 #             REST_Response(fiokAdatFrissitoForm.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+# ⚠️
 # tesztek
 # regisztrálás próbája
 def tesztRegisztral(request):

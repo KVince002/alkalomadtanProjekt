@@ -6,27 +6,32 @@
 <div class="rightbox">
     <div class="profile">
         <h1>Jelentkezéseim</h1>
-        {% if jelentkezesek is not none %}
+        {% if jelentkezesekLista is not none %}
         <table>
             <thead>
                 <th>
                 <td>Jelentkezéseid száma: </td>
-                <td>{{jelentkezesek|length}}</td>
+                <td>{{jelentkezesekLista|length}}</td>
                 </th>
             </thead>
             <tbody>
-                {% for elem in eredmeny %}
-                {% for belsoElem in elem %}
-                <tr>
-                    <td>
-                        {{belsoElem.nev}}
-                    </td>
-                    <td>
-                        <a>Megtekintés</a>
-                    </td>
-                </tr>
+
+                {% for jelentkezesElem in jelentkezesekLista %}
+                        {% for munkaElem in munkakLista %}
+                        <tr>
+                            <td>
+                                <h3>{% if jelentkezesElem.munka_id == munkaElem.id%}
+                                        {{munkaElem.nev}}
+                                    {% endif %}
+                                </h3>
+                            </td>
+                            <td>
+                                {{jelentkezesElem.bemutatkozas}}
+                            </td>
+                        <tr>
+                    {% endfor %}
                 {% endfor %}
-                {% endfor %}
+
             </tbody>
         </table>
         {% else %}

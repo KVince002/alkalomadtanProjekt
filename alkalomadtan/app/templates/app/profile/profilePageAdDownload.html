@@ -1,0 +1,61 @@
+{% extends 'app/layout/commonhead3.html' %}
+{% block content %}
+{% load static %}
+
+<!-- bejelentkezetett e -->
+{% if felhasznalo.is_authenticated %}
+    <!-- van e meghírdetett munkája -->
+    {% if jelentkezok is not None %}
+    <div class="rightbox">
+        <div class="profile">
+            <h2>Jelentkezők</h2>
+            {% for jelentkezo in jelentkezok %}
+            {{jelentkezo.ido}}
+                <table>
+                    <thead>
+                        <th>
+                            {{jelentkezo.munkaVallalo__first_name}} {{jelentkezo.munkaVallalo__last_name}}
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Információk
+                            </td>
+                            <td>
+                                Bemutatkozás
+                            <td>
+                            <td>
+                                CV
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <u>Email:</u> {{jelentkezo.munkaVallalo__email}}<br>
+                                <u>Bérigény:</u> {{jelentkezo.berigeny}}<br>
+                                <u>Jelentkezett:</u> {{jelentkezo.ido}}<br>
+                            </td>
+                            <td>
+                                {{jelentkezo.bemutatkozas}}
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="rightbox">
+        <div class="profile">
+            <h2>Jelentkezők</h2>
+            <h3>Jelenleg nincs erre a munkára jelentkező!</h3>
+        </div>
+    </div>
+    {% endif %}
+{% else %}
+{% endif %}
+
+{% endblock %}

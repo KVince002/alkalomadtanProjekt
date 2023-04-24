@@ -160,21 +160,24 @@ def Profil_UjMunka(request):
 
 # profil / jelentkezők megtekintése az adott munkához
 def Profil_JelentkezoMegtekinto(request, munka_Id):
+    print("Profil_JelentkezoMegtekinto(request, munka_Id) / profil oldalon a munkára jelentkezők megtekintése")
     felhasznalo = request.user
     
     # jelentkezők megtalálása
     munkaraJelentkezok = None
     try:
-        munkaraJelentkezok = list(Jelentkezes.objects.filter(munka = munka_Id))
+        munkaraJelentkezok = list(Jelentkezes.objects.select_related("munkaVallalo").values('munkaVallalo__first_name', 'munkaVallalo__last_name', 'munkaVallalo__email', 'bemutatkozas', 'melleklet', 'berigeny', "ido"))
+        print(munkaraJelentkezok[1])
     except:
         print(traceback.format_exc())
         munkaraJelentkezok = None
     
     # visszaad
-    template = loader.get_template("tesztoldal/file_letolt.html")
+    template = loader.get_template("app/profile/profilePageAdDownload.html")
     context = {
         "jelentkezok": munkaraJelentkezok,
-        "felhasznalo": felhasznalo
+        "felhasznalo": felhasznalo,
+        "cim": "jelentkezők a munkára"
         }
     return HttpResponse(template.render(context,request))
 

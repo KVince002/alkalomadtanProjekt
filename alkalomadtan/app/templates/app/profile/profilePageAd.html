@@ -33,6 +33,7 @@
             <p>{{i.munkaKezd}}</p>
             <h3>Megtekintés: </h3>
             <p>{{i.katt}}</p>
+            <a href="{% url 'Jelentkezo_Per_Munka' i.id%}"><h3>Jelentkezők megtekintése</h3></a>
             <br>
         </div>
         {% endfor %}

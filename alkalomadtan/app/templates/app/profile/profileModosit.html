@@ -4,7 +4,7 @@
 
 {% if felhasznalo.is_authenticated %}
 
-<form method="PATCH" action="{% url 'ProfilModosit' primaryKey=felhasznalo.pk %}">
+<form method="PUT" action="{% url 'ProfilModosit' primaryKey=felhasznalo.pk %}">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Frissít</button>

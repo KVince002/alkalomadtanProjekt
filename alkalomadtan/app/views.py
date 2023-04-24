@@ -307,7 +307,7 @@ class ProfilRestView(APIView):
         return HttpResponse(template.render(context, request))
 
     # ez fogja majd frissíteni az értéket
-    def patch(self, request, primaryKey):
+    def put(self, request, primaryKey):
         felhasznaloJelenleg = request.user
         # felhasználói fiók visszaadása vagy 404-es hibát ad
         felhasznaloFiok = get_object_or_404(User, pk = primaryKey)

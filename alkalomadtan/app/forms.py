@@ -109,7 +109,7 @@ class FelhasznaloPatchForm(forms.ModelForm):
     class Meta:
         model = User
         # minden mező
-        fields = ["first_name", "last_name", "email", "password"]
+        fields = ["first_name", "last_name", "email"]
         # de nem ezek
         # exclude = ["password", "username"]
 
@@ -118,7 +118,6 @@ class FelhasznaloPatchForm(forms.ModelForm):
             eloNev = self.cleaned_data["first_name"].lower()
             utoNev = self.cleaned_data["last_name"].lower()
             email = self.cleaned_data["email"].lower()
-            jelszo = self.cleaned_data["password"].lower()
 
             # érték ellenőrzés
 

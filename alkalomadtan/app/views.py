@@ -166,7 +166,7 @@ def Profil_JelentkezoMegtekinto(request, munka_Id):
     # jelentkezők megtalálása
     munkaraJelentkezok = None
     try:
-        munkaraJelentkezok = list(Jelentkezes.objects.select_related("munkaVallalo").values('munkaVallalo__first_name', 'munkaVallalo__last_name', 'munkaVallalo__email', 'bemutatkozas', 'melleklet', 'berigeny', "ido"))
+        munkaraJelentkezok = list(Jelentkezes.objects.select_related("munkaVallalo").values('munkaVallalo__first_name', 'munkaVallalo__last_name', 'munkaVallalo__email', 'bemutatkozas', 'melleklet', 'berigeny', "ido", "id", "munka"))
         print(munkaraJelentkezok[1])
     except:
         print(traceback.format_exc())
@@ -180,6 +180,16 @@ def Profil_JelentkezoMegtekinto(request, munka_Id):
         "cim": "jelentkezők a munkára"
         }
     return HttpResponse(template.render(context,request))
+
+# ez a függvény fogja letölni a jelentkező dokumentumát
+def Profil_JelentkezoDokumentLetolto(request, jelentkezes_id):
+    print("Profil_JelentkezoDokumentLetolto(request, jelentkezes_id) / profil munkahírdetések oldalon a jelentkezőnél le tudja tölteni az dokumentumot.")
+    felhasznalo = request.user
+
+    letoltendo = get_object_or_404(Jelentkezes, id=jelentkezes_id)
+    response = HttpResponse(letoltendo.melleklet, content_type='text/plain')
+    response['Content-Disposition'] = f'attachment; filename="{letoltendo.melleklet.name}"'
+    return response
 
 def Profil_Jelentkezesek(request):
     userId = request.user.id

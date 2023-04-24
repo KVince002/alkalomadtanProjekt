@@ -10,26 +10,27 @@
         <table>
             <thead>
                 <th>
-                <td>Jelentkezéseid száma: </td>
-                <td>{{jelentkezesekLista|length}}</td>
+                <td>Jelentkezéseid száma: {{jelentkezesekLista|length}}</td>
+                <td></td>
                 </th>
             </thead>
             <tbody>
 
                 {% for jelentkezesElem in jelentkezesekLista %}
-                        {% for munkaElem in munkakLista %}
                         <tr>
                             <td>
-                                <h3>{% if jelentkezesElem.munka_id == munkaElem.id%}
-                                        {{munkaElem.nev}}
-                                    {% endif %}
+                                <h3>
+                                    {{jelentkezesElem.munka__nev}}
                                 </h3>
                             </td>
                             <td>
+                                {{jelentkezesElem.ido}}
+                                <br>
+                                {{jelentkezesElem.berigeny}}
+                                <br>
                                 {{jelentkezesElem.bemutatkozas}}
                             </td>
                         <tr>
-                    {% endfor %}
                 {% endfor %}
 
             </tbody>

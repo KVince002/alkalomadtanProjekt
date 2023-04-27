@@ -8,12 +8,6 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned, 
 from app.models import *
 from django.core import serializers
 
-# django rest
-from rest_framework.decorators import api_view
-from rest_framework import status
-from rest_framework.response import Response as REST_Response
-from rest_framework.views import APIView
-
 import traceback
 
 # Create your views here.
@@ -299,66 +293,6 @@ def Regisztral(request):
         "form": regisztralasForm
         }
     return HttpResponse(template.render(context, request)) # type: ignore
-
-# profil moódosítása PATCH REST API-val
-class ProfilRestView(APIView):
-
-    def get(self, request, primaryKey):
-        felhasznaloJelenleg = request.user
-        # felhasználói fiók visszaadása vagy 404-es hibát ad
-        felhasznaloFiok = get_object_or_404(User, pk = primaryKey)
-        # form-ot hívjuk meg, de úgy hogy a form tudja a meglávő értékeket
-        fiokAdatFrissitoForm = FelhasznaloPatchForm(instance=felhasznaloFiok)
-        
-        template = loader.get_template("app/profile/profileModosit.html")
-        context = {
-        "cim": "Profil adatainak módosítása",
-        "form": fiokAdatFrissitoForm,
-        "felhasznalo": felhasznaloJelenleg
-        }
-        return HttpResponse(template.render(context, request))
-
-    # ez fogja majd frissíteni az értéket
-    def put(self, request, primaryKey):
-        felhasznaloJelenleg = request.user
-        # felhasználói fiók visszaadása vagy 404-es hibát ad
-        felhasznaloFiok = get_object_or_404(User, pk = primaryKey)
-        # form-ot hívjuk meg, de úgy hogy a form tudja a meglávő értékeket
-        fiokAdatFrissitoForm = FelhasznaloPatchForm(request.data, instance=felhasznaloFiok)
-
-        # from ellenőrzés
-        if fiokAdatFrissitoForm.is_valid():
-            fiokAdatFrissitoForm.save(commit=True)
-            # visszadja hogy minden rendben
-            return REST_Response(status=status.HTTP_200_OK)
-        else:
-            # visszaadja hogy rossz kérelmet kapott
-            REST_Response(fiokAdatFrissitoForm.errors, status=status.HTTP_400_BAD_REQUEST)
-        
-        template = loader.get_template("app/profile/profileModosit.html")
-        context = {
-        "cim": "Profil adatainak módosítása",
-        "form": fiokAdatFrissitoForm,
-        "felhasznalo": felhasznaloJelenleg
-        }
-        return HttpResponse(template.render(context, request))
-
-# profil modosítás REST PUT "function based views"
-# @api_view(["PUT", "POST", "PATCH"])
-# def ProfilAdatFrissito(request):
-#     if request.method == "PUT":
-#         felhasznaloFiok = get_object_or_404(User, pk = primaryKey)
-#         # form-ot hívjuk meg, de úgy hogy a form tudja a meglávő értékeket
-#         fiokAdatFrissitoForm = FelhasznaloPatchForm(request.data, instance=felhasznaloFiok)
-
-#         # from ellenőrzés
-#         if fiokAdatFrissitoForm.is_valid():
-#             fiokAdatFrissitoForm.save()
-#             # visszadja hogy minden rendben
-#             return REST_Response(status=status.HTTP_200_OK)
-#         else:
-#             # visszaadja hogy rossz kérelmet kapott
-#             REST_Response(fiokAdatFrissitoForm.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # ⚠️
 # tesztek

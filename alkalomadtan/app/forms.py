@@ -70,12 +70,16 @@ class MunkaFrom(ModelForm):
         # mely menzőkkel NE dolgozzon
         exclude = ["publikalo", "katt"]
 
+        labels = {
+            "munkaKezd:", "Munka kezdése"
+        }
+
     nev = forms.CharField(label="Munka neve", max_length=250)
     leiras = forms.TextInput()
-    helye = forms.CharField(label="Munkka végzésének a helye:", max_length=150)
+    helye = forms.CharField(label="Munka végzésének a helye:", max_length=150)
     berMin = forms.IntegerField(label="Minimum bér")
-    berMax = forms.IntegerField(label="Maximum bér")
-    munkaKezd = forms.DateField(label="Munka kezdésének az időpontja")
+    berMax = forms.IntegerField(label="Maximum bér", required=False)
+    munkaKezd = forms.DateTimeField(help_text='Megfeleő formátum: "éééé-hh-nn óó:pp:mm"')
 
 # Profil frissítő form
 class ProfilFrissForm(forms.Form):

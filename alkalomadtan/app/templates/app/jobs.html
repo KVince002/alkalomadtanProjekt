@@ -2,6 +2,46 @@
 {% block content %}
 {% load static %}
 
+    {% if felhasznalo.is_authenticated %}
+    {% comment %} sima másolás a logedJobs.html fájlból {% endcomment %}
+    <section class="jobs">
+        <h1>Meghirdetett Állások</h1>
+        <input type="text" id="myInput" placeholder="Keresés...">
+    
+        {% if allasok == "Hihetelen de nincs most aktív hirdetés!" %}
+            <div class="row"><!----Ez egy sorba rendezi a 3 hírdetést----> 
+                <div class="jobs-col"><!----Ez egy darab hirdetés "doboz"----> 
+                    <h3>Hihetelen!</h3>
+                    <p>Sajnos nincs jelengleg egy aktív állásunk se!</p>
+                </div>
+            </div
+        {% else %}
+            <div class="row">
+            {% for allas in allasok %}
+    
+                    <div class="jobs-col logedjob">
+                        <h3>{{allas.nev}}</h3>
+                        {% if allas.berMax is none %}
+                        <p>{{allas.berMin}}</p>
+                        {% else %}
+                        <p>{{allas.berMin}} --> {{allas.berMax}}</p>
+                        {% endif %}
+                        {% comment %} <p>{{allas.leiras}}</p> {% endcomment %}
+                        <a class="hero-btn black-btn place-btn" href="{% url "MunkaReszlet" allas.id %}">Érdekel</a>
+                    </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+    
+        <div class="row"><!----Ez egy sorba rendezi a 3 hírdetést----> 
+            <div class="jobs-col"><!----Ez egy darab hirdetés "doboz"----> 
+                <h3>SZIGET fesztivál</h3>
+                <p>Információ pultos</p>
+                <button class="hero-btn black-btn place-btn">Érdekel</button><!----classok a színekért és az animációért kellenek----> 
+            </div>
+        </div>
+    </section>
+    {% else %}
     <!--- Jobs----->
     <section class="jobs">
         <h1>Több mint <span class="num" num="1000">00</span>+ állás</h1>
@@ -55,5 +95,6 @@
         </div>
 
     </section>
+    {% endif %}
 
 {% endblock %}

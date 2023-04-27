@@ -5,9 +5,7 @@
     {% if felhasznalo.is_authenticated %}
     {% comment %} sima másolás a logedJobs.html fájlból {% endcomment %}
     <section class="jobs">
-        <h1>Meghirdetett Állások</h1>
-        <input type="text" id="myInput" placeholder="Keresés...">
-    
+        <h1>Meghirdetett Állások</h1>    
         {% if allasok == "Hihetelen de nincs most aktív hirdetés!" %}
             <div class="row"><!----Ez egy sorba rendezi a 3 hírdetést----> 
                 <div class="jobs-col"><!----Ez egy darab hirdetés "doboz"----> 
@@ -16,9 +14,10 @@
                 </div>
             </div
         {% else %}
-            <div class="row">
             {% for allas in allasok %}
-    
+                {% if forloop.counter0|divisibleby:3 %}
+                    <div class="row">
+                    {% endif %}
                     <div class="jobs-col logedjob">
                         <h3>{{allas.nev}}</h3>
                         {% if allas.berMax is none %}
@@ -29,17 +28,13 @@
                         {% comment %} <p>{{allas.leiras}}</p> {% endcomment %}
                         <a class="hero-btn black-btn place-btn" href="{% url "MunkaReszlet" allas.id %}">Érdekel</a>
                     </div>
+                {% if forloop.counter0|add:1|divisibleby:3 or forloop.last %}
+            </div>
+            {% endif %}
             {% endfor %}
             </div>
-        {% endif %}
-    
-        <div class="row"><!----Ez egy sorba rendezi a 3 hírdetést----> 
-            <div class="jobs-col"><!----Ez egy darab hirdetés "doboz"----> 
-                <h3>SZIGET fesztivál</h3>
-                <p>Információ pultos</p>
-                <button class="hero-btn black-btn place-btn">Érdekel</button><!----classok a színekért és az animációért kellenek----> 
-            </div>
         </div>
+        {% endif %}
     </section>
     {% else %}
     <!--- Jobs----->

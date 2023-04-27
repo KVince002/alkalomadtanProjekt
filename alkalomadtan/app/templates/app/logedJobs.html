@@ -15,21 +15,26 @@
             </div>
         </div
     {% else %}
+    {% for allas in allasok %}
+    {% if forloop.counter0|divisibleby:3 %}
         <div class="row">
-        {% for allas in allasok %}
-
-                <div class="jobs-col logedjob">
-                    <h3>{{allas.nev}}</h3>
-                    {% if allas.berMax is none %}
-                    <p>{{allas.berMin}}</p>
-                    {% else %}
-                    <p>{{allas.berMin}} --> {{allas.berMax}}</p>
-                    {% endif %}
-                    {% comment %} <p>{{allas.leiras}}</p> {% endcomment %}
-                    <a class="hero-btn black-btn place-btn" href="{% url "MunkaReszlet" allas.id %}">Érdekel</a>
-                </div>
-        {% endfor %}
+        {% endif %}
+        <div class="jobs-col logedjob">
+            <h3>{{allas.nev}}</h3>
+            {% if allas.berMax is none %}
+            <p>{{allas.berMin}}</p>
+            {% else %}
+            <p>{{allas.berMin}} --> {{allas.berMax}}</p>
+            {% endif %}
+            {% comment %} <p>{{allas.leiras}}</p> {% endcomment %}
+            <a class="hero-btn black-btn place-btn" href="{% url "MunkaReszlet" allas.id %}">Érdekel</a>
         </div>
+    {% if forloop.counter0|add:1|divisibleby:3 or forloop.last %}
+</div>
+{% endif %}
+{% endfor %}
+</div>
+</div>
     {% endif %}
 
     <div class="row"><!----Ez egy sorba rendezi a 3 hírdetést----> 

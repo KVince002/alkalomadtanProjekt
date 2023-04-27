@@ -42,11 +42,23 @@ def Rolunk(request):
 
 # állásokat bemutató oldal
 def AllasokBemutato(request):
-    print("Állaások bemutatójának / Allasok(request)")
-
+    print("Állások bemutatójának / Allasok(request)")
+    # ha nincs bejelentkezve
+    felhasznalo = request.user
     template = loader.get_template("app/jobs.html")
+
+    # de ha be van jekentkezve
+    allasok =""
+    try:
+        # ez a Mumka modellből fog az 30 értéket vissza adni listaként
+        allasok =Munka.objects.all()[:30]
+    except:
+        allasok = "Hihetelen de nincs most aktív hirdetés!"
+
     context = {
         "cim": "Állások bemutató",
+        "felhasznalo": felhasznalo,
+        "allasok": allasok
         }
     return HttpResponse(template.render(context,request))
 
@@ -57,8 +69,8 @@ def Allasok(request):
     allasok =""
 
     try:
-        # ez a Mumka modellből fog az 20 értéket vissza adni listaként
-        allasok =Munka.objects.all()[:20]
+        # ez a Mumka modellből fog az 30 értéket vissza adni listaként
+        allasok =Munka.objects.all()[:30]
     except:
         allasok = "Hihetelen de nincs most aktív hirdetés!"
 
@@ -145,7 +157,7 @@ def Profil_UjMunka(request):
 
             else:
                 print("invalid form")
-                print(ujMunkaForm.errors)         
+                print(ujMunkaForm.errors)
     else:
         ujMunkaForm = MunkaFrom()
     template = loader.get_template("app/profile/profilePagePlus.html")

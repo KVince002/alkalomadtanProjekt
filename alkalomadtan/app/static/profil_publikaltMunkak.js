@@ -24,12 +24,14 @@ function mindenMunkak() {
 }
 
 // minden látható munkát töröl
-function osszesMunkaTorlo(munkakTomb) {
+function osszesMunkaTorlo() {
     try {
-        console.log(munkak.childElementCount)
-        for (let i = 0; i <= munkak.childElementCount; i++) {
+        let megjelenoMunkakSzama = munkak.childElementCount;
+        console.log("Eltávolítandó munkák száma: ", megjelenoMunkakSzama)
+        for (let i = megjelenoMunkakSzama - 1; i >= 0; i--) {
             // ez majd kitörli a munkak gyermek elemét amit elmentettünk a munkak tömbbe
-            munkak.removeChild(munkak.children.item(munkakTomb[i].node));
+            munkak.removeChild(munkak.children.item(i));
+            console.log("Munka elem ", i, "eltávolítva");
         }
     }
     catch (ex) {
@@ -53,7 +55,7 @@ function munkaMutatoStatusz() {
     úgytűnik ez a függvény a leges legutóbbi munkát mutatja
 */
 function elsoMunka(munkakTomb) {
-    munkak.appendChild(munkak.children.item(munkakTomb[0]));
+    munkak.appendChild(munkakTomb[0].node);
 }
 /*
     az alábbi függvények lesznek amik a nyilakat vezérlik a megjelenítendő munkákat
@@ -64,15 +66,15 @@ function eloreNyil(munkakTomb) {
     console.log("lapozoIndex: ", lapozoIndex);
     try {
         if (lapozoIndex > munkakTomb.length || lapozoIndex === munkakTomb.length) {
-            console.log("Nincs hová vissza lapozni, így is túllépett! Vissza állítás a legutóbbi értékre!");
+            console.log("Nincs hová előre lapozni, így is túllépett! Vissza állítás a legutóbbi értékre!");
             lapozoIndex = munkakTomb.length - 1;
         } else {
             // hogyha a következő léséssal a munkakTomb hosszát érné el, akkor ne adjon hozzá új értéket{
+            lapozoIndex++;
             console.log("lapozás elóre");
             console.log("Mostani oldal: ", munkakTomb[lapozoIndex]);
             const jelenlegiMunka = munkak.children.item(0);
             munkak.replaceChild(munkakTomb[lapozoIndex].node, jelenlegiMunka);
-            lapozoIndex++;
         }
     }
     catch {
@@ -99,15 +101,12 @@ function hatraNyil(munkakTomb) {
             console.log("Mostani oldal: ", munkakTomb[lapozoIndex]);
             const jelenlegiMunka = munkak.children.item(0);
             munkak.replaceChild(munkakTomb[lapozoIndex].node, jelenlegiMunka)
-        } else if (parseInt(munkak.children.item(0).id) === munkakTomb[lapozoIndex].id) {
-            // ha a megjelenő munkának az id-ja megegyezik avval az eltárolt munkánka az id-jával ami most megjelenik akkor lépjen vissza az előző munkára
-
         } else {
+            lapozoIndex--;
             console.log("lapozás vissza");
             console.log("Mostani oldal: ", munkakTomb[lapozoIndex]);
             const jelenlegiMunka = munkak.children.item(0);
             munkak.replaceChild(munkakTomb[lapozoIndex].node, jelenlegiMunka)
-            lapozoIndex--;
         }
     }
     catch {
@@ -131,6 +130,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     console.log("DOM fully loaded and parsed");
     console.log("Event: ", event);
 
-    osszesMunkaTorlo(mindenMunkak_Tomb);
+    osszesMunkaTorlo();
     elsoMunka(mindenMunkak_Tomb)
 });

@@ -772,6 +772,7 @@ textarea {
         margin: -30px;
     }
 }
+
 /* hiba foltozások */
 .jobs h1 {
     color: black;
@@ -782,7 +783,17 @@ textarea {
 }
 
 /* Kiegészítés Django-hoz */
-.description h4, span, label{
+.description h4,
+span,
+label {
     color: black;
-    font-style:normal;
+    font-style: normal;
+}
+
+/* kiegészítés */
+@media(max-width: 700px) {
+    .logo {
+        width: 119px;
+        height: 98px;
+    }
 }

@@ -48,16 +48,10 @@ urlpatterns = [
     # az új regizstráló oldal
     path("regisztral/", views.Regisztral, name="Regisztral"), # type: ignore
 
-    # django auth oldalak
-    # Ezek a Django-ba beleépített oldalak "sablonok", ezek felül lehet írni, de csak óvatosan!
+    # django auth oldal
+    # Ez a Django-ba beleépített oldal"sablonok", ezeket felül lehet írni, de csak óvatosan!
     # ez a django bejelentkezés kezelője
     path("bejelentkezes/", auth_views.LoginView.as_view(template_name="app/auth/login_auth.html", redirect_authenticated_user=True), name="bejelentkezes_auth"),
-    # az a django jelszó helyre állító oldala (természetesen a profilokhoz!)
-    path("jelszohelyre/", auth_views.PasswordResetView.as_view(
-        template_name="app/auth/jelszoHelyre_auth.html"), name="jelszoHelyre_auth"),
-    # ez a django jelszó változtatója
-    path("jelszovalt/", auth_views.PasswordChangeView.as_view(
-        template_name="app/auth/jelszoValt_auth.html"), name="jelszoValt_auth"),
 
     # teszt oldalak
     path("tesztRegisztral/", views.tesztRegisztral, name="tesztRegisztral"),

@@ -292,7 +292,7 @@ def Regisztral(request):
         "cim": "Regisztráció",
         "form": regisztralasForm
         }
-    return HttpResponse(template.render(context, request)) # type: ignore
+    return HttpResponse(template.render(context, request))
 
 # ⚠️
 # tesztek

@@ -30,15 +30,11 @@ class Munka(models.Model):
     berMax = models.IntegerField(null=True)
     # mikor fog amjd a munka kezdődni
     munkaKezd = models.DateTimeField()
-    # munka napok kivéve, át dolgozás kell neki
-    # munkanapok és óraszámok. Ez egy map/szótár-t fog majd tárolni. A szótár inex: napok; érték: óraköz
-    # munkaNapok = models.TextField()
 
     def __str__(self):
         return f"Azon:{self.id}, Munka neve: {self.nev}, publikáló: {self.publikalo}"
 
 # jelentkezés modell
-
 def KonyvtarKezeles(instance, fajlNev):
     print(type(instance))
     # split() után tömböt kapunk

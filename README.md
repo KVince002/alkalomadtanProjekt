@@ -39,5 +39,5 @@ py -m pip install Django
 py manage.py runserver
 ```
 
-Ha mindent jól csinált akkor ennek kell majd megjelennie:
+Ha mindent jól csinálta akkor ennek kell majd megjelennie:
 ![image](https://user-images.githubusercontent.com/93611221/235539936-56992f33-8d9f-4172-b53e-17c8950ec091.png)

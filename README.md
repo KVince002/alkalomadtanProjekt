@@ -12,11 +12,6 @@ Részletes statisztika a projektről: [Részletek](https://wakatime.com/@Cincenn
 - Django 4.1 vagy újabb
 - Windows 10 / 11
 
-### Linux
-- Python 3.10 vagy újabb
-- Django 4.1 vagy újabb
-- OpenSuSE Leap 15.4 rendszer javasolt a `python310`csomaggal
-
 ## Szerver és projekt futtatásához
 Ahhoz hogy a szerver megfelelően fusson fontos egy pár lépést megtenni a futtatáshoz!
 

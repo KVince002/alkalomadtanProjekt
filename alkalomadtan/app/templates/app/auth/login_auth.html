@@ -9,7 +9,7 @@
             <div class="form">
                 <h2>Bejelentkezés</h2>
                 {% if user.is_authenticated %}
-                    <p>Már be vagy jelentkezve! Nem kell erre az oldalra lépned!</p>
+                    <p>Már be vagy jelentkezve! Nem kell erre az oldalra lépned! Hogy került ide?</p>
                 {% else %}
                 <form method="post">
                     {% csrf_token %}
@@ -32,7 +32,6 @@
                         <i></i>
                     </div>
                     <div class="links">
-                        <a href="{% url 'jelszoHelyre_auth' %}">Elfelejtett jelszó?</a>
                         <a href="{% url 'tesztRegisztral' %}">Regisztrálok</a>
                     </div>
                     <div>

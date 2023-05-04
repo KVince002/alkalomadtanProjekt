@@ -20,7 +20,7 @@ class Regisztralas(UserCreationForm):
     class Meta:
         model = UserCreationForm.Meta.model
         # Mivel a UserCreationForm egy már meglévő osztály, de mi szeretnénk hoztáadni egy pár új mezőt. A user tábla már tartalmazza ezt a két mezőt csak alapértelmezetten nem tartalmazza az űrlap.
-        fields = UserCreationForm.Meta.fields + ("first_name", "last_name") # type: ignore
+        fields = UserCreationForm.Meta.fields + ("first_name", "last_name","email") # type: ignore
 
     # ezekkel a függvényekkel olvassuk és ellenőrizzük az adatokat amiket a From filed-ekből szerzünk meg
     def clean_eloNev(self):

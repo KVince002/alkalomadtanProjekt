@@ -30,7 +30,7 @@
                 {% endfor %}
                 {% comment %} linkek {% endcomment %}
                 <div class="links">
-                    <a href="login.html">Már van fiókom</a><!--Ugye a link ami visszadob a bejelentkezés részhez-->
+                    <a href="{% url 'bejelentkezes_auth' %}">Már van fiókom</a><!--Ugye a link ami visszadob a bejelentkezés részhez-->
                 </div>
                 <div>
                     <input type="submit" value="Regisztrálok" class="hero-btn">

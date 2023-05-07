@@ -3,9 +3,6 @@
 
 [![wakatime](https://wakatime.com/badge/user/0ec14411-be49-464a-9639-0907ad5f39a6/project/128ab571-63bb-4654-aebb-60967f1583b4.svg)](https://wakatime.com/badge/user/0ec14411-be49-464a-9639-0907ad5f39a6/project/128ab571-63bb-4654-aebb-60967f1583b4)
 
-Részletes statisztika a projektről: [Részletek](https://wakatime.com/@Cincennes/projects/jycyrdlmgp?start=2023-04-20&end=2023-04-26)
-# Alkalomadtan projekt útmutató
-
 ## Szoftveres követelmény
 ### Windwos
 - Python 3.10 vagy újabb

@@ -42,5 +42,8 @@ py manage.py runserver
 Ha mindent jól csinálta akkor ennek kell majd megjelennie:
 ![image](https://user-images.githubusercontent.com/93611221/235539936-56992f33-8d9f-4172-b53e-17c8950ec091.png)
 
+## Oldal fájlai
+Az projekt fájlai az "alkalomadtan" mappában vannak. Kérem ne abba a mappába hozza létre virtuális környezetet!
+
 ## Dokumentáció
-A dokumentáció fájlja "Alkalomadtan - Dokumentáció -- másolat.docx". Azonban van egy pár forrás amit nem tudtam beleilleszteni vagy megjeleníteni a dokumentumba a limitációk miatt! Kérem tekintse meg a /alkalomadtan/Dokumentációhoz nevű mappát a további fájlokért!
+A dokumentáció és egyéb kiegészítő fájlok a "Dokumentációk" mappában találhatók
